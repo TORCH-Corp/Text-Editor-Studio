@@ -1,7 +1,7 @@
 {
-  "name": "docs_editor_test",
+  "name": "text-editor-studio",
   "private": false,
-  "version": "1.0.14",
+  "version": "1.0.0",
   "type": "module",
   "main": "index.js",
   "files": [
