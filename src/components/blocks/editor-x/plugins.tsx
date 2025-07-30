@@ -141,10 +141,10 @@ export function Plugins({}) {
   };
 
   return (
-    <div className="relative">
+    <div className="relative min-w-0 flex flex-col h-full max-w-full overflow-x-hidden">
       <ToolbarPlugin>
         {({ blockType }) => (
-          <div className="flex w-full h-[42px] pr-2 p-[5px] gap-[2px]  items-center self-stretch border-b border-[var(--Border-Presentation-Global-Primary,#d4d4d4)] bg-[var(--Background-Presentation-Form-Header,rgba(255,255,255,0.2))] shadow-[0px_2px_9px_0px_var(--Background-Presentation-Form-Header-Shadow,rgba(0,0,0,0.1))] backdrop-blur-[8px] rounded-[4px]">
+          <div className="flex h-[42px] pr-2 p-[5px] gap-[2px] items-center border-b border-[var(--Border-Presentation-Global-Primary,#d4d4d4)] bg-[var(--Background-Presentation-Form-Header,rgba(255,255,255,0.2))] shadow-[0px_2px_9px_0px_var(--Background-Presentation-Form-Header-Shadow,rgba(0,0,0,0.1))] backdrop-blur-[8px] rounded-[4px] overflow-x-auto scrollbar-hide md:overflow-x-visible min-w-0 flex-nowrap">
             <HistoryToolbarPlugin />
             <Separator orientation="vertical" className="h-8" />
             <BlockFormatDropDown>
@@ -193,15 +193,15 @@ export function Plugins({}) {
           </div>
         )}
       </ToolbarPlugin>
-      <div className="relative">
+      <div className="relative flex-1 min-h-0">
         <AutoFocusPlugin />
         <RichTextPlugin
           contentEditable={
-            <div className="">
-              <div className="" ref={onRef}>
+            <div className="w-full max-w-full overflow-x-hidden">
+              <div className="w-full max-w-full overflow-x-hidden" ref={onRef}>
                 <ContentEditable
                   placeholder={placeholder}
-                  className="ContentEditable__root relative block  overflow-auto min-h-full px-12 py-4 focus:outline-none h-[830px]"
+                  className="ContentEditable__root relative block overflow-y-auto overflow-x-hidden w-full max-w-full px-2 md:px-12 py-4 focus:outline-none h-[calc(100vh-120px)] md:h-[calc(100vh-120px)]"
                 />
               </div>
             </div>

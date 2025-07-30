@@ -171,3 +171,36 @@ h1 {
     @apply bg-background text-foreground;
   }
 }
+
+/* Editor word wrapping styles */
+.ContentEditable__root {
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+.ContentEditable__root * {
+  max-width: 100% !important;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+}
+
+.ContentEditable__root p,
+.ContentEditable__root div,
+.ContentEditable__root span {
+  max-width: 100% !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Prevent any horizontal overflow in the entire editor */
+.ContentEditable__root,
+.ContentEditable__root *,
+[data-lexical-editor] {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
