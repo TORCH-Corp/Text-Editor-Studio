@@ -1,8 +1,9 @@
 import { Editor, EditorWebComponent } from "./components/blocks/editor-x/editor";
+import { EditorClient } from "./components/blocks/editor-x/editor-client";
 import "./index.css";
 
 // Export the main components
-export { Editor, EditorWebComponent };
+export { Editor, EditorWebComponent, EditorClient };
 
 // Export types for TypeScript users
 export type { EditorProps } from "./components/blocks/editor-x/editor";

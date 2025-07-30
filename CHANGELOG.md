@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.1] - 2024-12-28
+
+### 🔧 Fixed
+- **SSR Compatibility**: Fixed "HTMLElement is not defined" error in Next.js applications
+- **Server-Side Rendering**: Added proper environment checks for browser-only APIs
+- **Web Components**: Made web component registration conditional and browser-only
+
+### 🚀 Added
+- **EditorClient Component**: New SSR-safe wrapper component for Next.js applications
+- **Environment Guards**: Added `typeof window !== 'undefined'` checks throughout codebase
+- **Next.js Documentation**: Added comprehensive Next.js usage guide (`NEXT_JS_USAGE.md`)
+
+### 🔧 Technical Changes
+- Updated `guard.ts` to handle SSR environments safely
+- Enhanced `use-report.ts` with client-side only execution
+- Conditional loading of `@r2wc/react-to-web-component` package
+- Added null checks and error handling for DOM operations
+
+### 📱 Next.js Support
+- Use `EditorClient` component for automatic SSR handling
+- Alternative dynamic import approach with `ssr: false`
+- Comprehensive troubleshooting guide for SSR issues
+
 ## [1.1.0] - 2024-12-28
 
 ### 🚀 Added

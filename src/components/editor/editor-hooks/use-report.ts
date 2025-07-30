@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useRef } from 'react'
 
-const getElement = (): HTMLElement => {
+const getElement = (): HTMLElement | null => {
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return null
+  }
+  
   let element = document.getElementById('report-container')
 
   if (element === null) {
@@ -23,16 +27,25 @@ const getElement = (): HTMLElement => {
   return element
 }
 
-export function useReport(): (arg0: string) => ReturnType<typeof setTimeout> {
+export function useReport(): (arg0: string) => ReturnType<typeof setTimeout> | null {
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const cleanup = useCallback(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+    
     if (timer.current !== null) {
       clearTimeout(timer.current)
       timer.current = null
     }
 
-    if (document.body) {
-      document.body.removeChild(getElement())
+    const element = getElement()
+    if (document.body && element) {
+      try {
+        document.body.removeChild(element)
+      } catch (error) {
+        // Element might not be in DOM, ignore
+      }
     }
   }, [])
 
@@ -42,8 +55,16 @@ export function useReport(): (arg0: string) => ReturnType<typeof setTimeout> {
 
   return useCallback(
     (content) => {
+      if (typeof window === 'undefined') {
+        return null
+      }
+      
       console.log(content)
       const element = getElement()
+      if (!element) {
+        return null
+      }
+      
       if (timer.current !== null) {
         clearTimeout(timer.current)
       }

@@ -1,7 +1,7 @@
 {
   "name": "text-editor-studio-ts",
   "private": false,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "type": "module",
   "description": "A powerful mobile-responsive rich text editor built with Lexical and React",
   "keywords": [
@@ -31,7 +31,8 @@
   "files": [
     "dist",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "NEXT_JS_USAGE.md"
   ],
   "scripts": {
     "dev": "vite",
