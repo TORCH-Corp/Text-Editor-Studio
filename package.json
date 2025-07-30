@@ -1,7 +1,7 @@
 {
   "name": "text-editor-studio-ts",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "A powerful rich text editor built with Lexical and React",
   "keywords": [
