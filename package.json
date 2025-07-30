@@ -1,7 +1,7 @@
 {
   "name": "text-editor-studio-ts",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "A powerful rich text editor built with Lexical and React",
   "keywords": [
@@ -14,7 +14,6 @@
   ],
   "author": "Your Name",
   "license": "MIT",
-
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
