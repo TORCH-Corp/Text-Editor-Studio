@@ -7,11 +7,11 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { useCallback, useMemo, useState, JSX } from "react";
+import { useCallback, useMemo, useState, JSX, Suspense } from "react";
 // @ts-ignore
 import { createPortal } from "react-dom";
 
-import dynamic from "next/dynamic";
+import { lazy } from "react";
 
 import { TextNode } from "lexical";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
@@ -28,9 +28,8 @@ import {
 import { useEditorModal } from "@/components/editor/editor-hooks/use-modal";
 import { ComponentPickerOption } from "@/components/editor/plugins/picker/component-picker-option";
 
-const LexicalTypeaheadMenuPlugin = dynamic(
-  () => import("./default/lexical-typeahead-menu-plugin"),
-  { ssr: false }
+const LexicalTypeaheadMenuPlugin = lazy(
+  () => import("./default/lexical-typeahead-menu-plugin")
 );
 export function ComponentPickerMenuPlugin({
   baseOptions = [],
@@ -87,67 +86,69 @@ export function ComponentPickerMenuPlugin({
   return (
     <>
       {modal}
-      {/* @ts-ignore */}
-      <LexicalTypeaheadMenuPlugin<ComponentPickerOption>
-        onQueryChange={setQueryString}
-        onSelectOption={onSelectOption}
-        triggerFn={checkForTriggerMatch}
-        options={options}
-        menuRenderFn={(
-          anchorElementRef,
-          { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex }
-        ) => {
-          return anchorElementRef.current && options.length
-            ? createPortal(
-                <div className="fixed w-[250px] rounded-md shadow-md">
-                  <Command
-                    onKeyDown={(e) => {
-                      if (e.key === "ArrowUp") {
-                        e.preventDefault();
-                        setHighlightedIndex(
-                          selectedIndex !== null
-                            ? (selectedIndex - 1 + options.length) %
-                                options.length
-                            : options.length - 1
-                        );
-                      } else if (e.key === "ArrowDown") {
-                        e.preventDefault();
-                        setHighlightedIndex(
-                          selectedIndex !== null
-                            ? (selectedIndex + 1) % options.length
-                            : 0
-                        );
-                      }
-                    }}
-                  >
-                    <CommandList>
-                      <CommandGroup>
-                        {options.map((option, index) => (
-                          <CommandItem
-                            key={option.key}
-                            value={option.title}
-                            onSelect={() => {
-                              selectOptionAndCleanUp(option);
-                            }}
-                            className={`flex items-center gap-2 ${
-                              selectedIndex === index
-                                ? "bg-accent"
-                                : "!bg-transparent"
-                            }`}
-                          >
-                            {option.icon}
-                            {option.title}
-                          </CommandItem>
-                        ))}
-                      </CommandGroup>
-                    </CommandList>
-                  </Command>
-                </div>,
-                anchorElementRef.current
-              )
-            : null;
-        }}
-      />
+      <Suspense fallback={<div>Loading...</div>}>
+        {/* @ts-ignore */}
+        <LexicalTypeaheadMenuPlugin<ComponentPickerOption>
+          onQueryChange={setQueryString}
+          onSelectOption={onSelectOption}
+          triggerFn={checkForTriggerMatch}
+          options={options}
+          menuRenderFn={(
+            anchorElementRef,
+            { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex }
+          ) => {
+            return anchorElementRef.current && options.length
+              ? createPortal(
+                  <div className="fixed w-[250px] rounded-md shadow-md">
+                    <Command
+                      onKeyDown={(e) => {
+                        if (e.key === "ArrowUp") {
+                          e.preventDefault();
+                          setHighlightedIndex(
+                            selectedIndex !== null
+                              ? (selectedIndex - 1 + options.length) %
+                                  options.length
+                              : options.length - 1
+                          );
+                        } else if (e.key === "ArrowDown") {
+                          e.preventDefault();
+                          setHighlightedIndex(
+                            selectedIndex !== null
+                              ? (selectedIndex + 1) % options.length
+                              : 0
+                          );
+                        }
+                      }}
+                    >
+                      <CommandList>
+                        <CommandGroup>
+                          {options.map((option, index) => (
+                            <CommandItem
+                              key={option.key}
+                              value={option.title}
+                              onSelect={() => {
+                                selectOptionAndCleanUp(option);
+                              }}
+                              className={`flex items-center gap-2 ${
+                                selectedIndex === index
+                                  ? "bg-accent"
+                                  : "!bg-transparent"
+                              }`}
+                            >
+                              {option.icon}
+                              {option.title}
+                            </CommandItem>
+                          ))}
+                        </CommandGroup>
+                      </CommandList>
+                    </Command>
+                  </div>,
+                  anchorElementRef.current
+                )
+              : null;
+          }}
+        />
+      </Suspense>
     </>
   );
 }

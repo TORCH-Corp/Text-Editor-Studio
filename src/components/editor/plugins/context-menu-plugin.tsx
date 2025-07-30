@@ -1,6 +1,6 @@
-import { useCallback, useMemo, JSX } from "react";
+import { useCallback, useMemo, JSX, Suspense } from "react";
 import React from "react";
-import dynamic from "next/dynamic";
+import { lazy } from "react";
 
 import { $isLinkNode, TOGGLE_LINK_COMMAND } from "@lexical/link";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
@@ -23,9 +23,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-const LexicalContextMenuPlugin = dynamic(
-  () => import("./default/lexical-context-menu-plugin"),
-  { ssr: false }
+const LexicalContextMenuPlugin = lazy(
+  () => import("./default/lexical-context-menu-plugin")
 );
 
 export class ContextMenuOption extends MenuOption {
@@ -168,57 +167,59 @@ export function ContextMenuPlugin(): JSX.Element {
   };
 
   return (
-    <LexicalContextMenuPlugin
-      options={options}
-      onSelectOption={(option, targetNode) => {
-        onSelectOption(option as ContextMenuOption, targetNode, () => {
+    <Suspense fallback={<div>Loading...</div>}>
+      <LexicalContextMenuPlugin
+        options={options}
+        onSelectOption={(option, targetNode) => {
+          onSelectOption(option as ContextMenuOption, targetNode, () => {
+            setIsOpen(false);
+          });
+        }}
+        onWillOpen={onWillOpen}
+        onOpen={() => {
+          setIsOpen(true);
+        }}
+        onClose={() => {
           setIsOpen(false);
-        });
-      }}
-      onWillOpen={onWillOpen}
-      onOpen={() => {
-        setIsOpen(true);
-      }}
-      onClose={() => {
-        setIsOpen(false);
-      }}
-      menuRenderFn={(
-        anchorElementRef,
-        { options: _options, selectOptionAndCleanUp },
-        { setMenuRef }
-      ) => {
-        return anchorElementRef.current ? (
-          <Popover open={isOpen} onOpenChange={setIsOpen}>
-            <PopoverPortal container={anchorElementRef.current}>
-              <div>
-                <PopoverTrigger
-                  ref={setMenuRef}
-                  style={{
-                    marginLeft: anchorElementRef.current?.style.width,
-                    userSelect: "none",
-                  }}
-                />
-                <PopoverContent className="w-[200px] p-1">
-                  <Command>
-                    <CommandList>
-                      {options.map((option) => (
-                        <CommandItem
-                          key={option.key}
-                          onSelect={() => {
-                            selectOptionAndCleanUp(option);
-                          }}
-                        >
-                          {option.title}
-                        </CommandItem>
-                      ))}
-                    </CommandList>
-                  </Command>
-                </PopoverContent>
-              </div>
-            </PopoverPortal>
-          </Popover>
-        ) : null;
-      }}
-    />
+        }}
+        menuRenderFn={(
+          anchorElementRef,
+          { options: _options, selectOptionAndCleanUp },
+          { setMenuRef }
+        ) => {
+          return anchorElementRef.current ? (
+            <Popover open={isOpen} onOpenChange={setIsOpen}>
+              <PopoverPortal container={anchorElementRef.current}>
+                <div>
+                  <PopoverTrigger
+                    ref={setMenuRef}
+                    style={{
+                      marginLeft: anchorElementRef.current?.style.width,
+                      userSelect: "none",
+                    }}
+                  />
+                  <PopoverContent className="w-[200px] p-1">
+                    <Command>
+                      <CommandList>
+                        {options.map((option) => (
+                          <CommandItem
+                            key={option.key}
+                            onSelect={() => {
+                              selectOptionAndCleanUp(option);
+                            }}
+                          >
+                            {option.title}
+                          </CommandItem>
+                        ))}
+                      </CommandList>
+                    </Command>
+                  </PopoverContent>
+                </div>
+              </PopoverPortal>
+            </Popover>
+          ) : null;
+        }}
+      />
+    </Suspense>
   );
 }

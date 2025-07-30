@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import {
   ReactElement,
   useEffect,
@@ -8,7 +8,7 @@ import {
   JSX,
 } from "react";
 
-import dynamic from "next/dynamic";
+import { lazy } from "react";
 
 import {
   AppState,
@@ -22,7 +22,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogClose, DialogContent } from "@/components/ui/dialog";
 
 // @ts-ignore
-const Excalidraw = dynamic(() => import("./excalidraw"), { ssr: false });
+const Excalidraw = lazy(() => import("./excalidraw"));
 
 export type ExcalidrawInitialElements = ExcalidrawInitialDataState["elements"];
 
@@ -220,18 +220,17 @@ export function ExcalidrawModal({
           <div className="h-full w-full" ref={excaliDrawModelRef} tabIndex={-1}>
             <div className="h-full w-full">
               {discardModalOpen && <ShowDiscardDialog />}
-              <Excalidraw
-                onChange={onChange}
-                excalidrawAPI={excalidrawAPIRefCallback}
-                initialData={{
-                  appState: initialAppState || { isLoading: false },
-                  elements: initialElements,
-                  files: initialFiles,
-                }}
-              />
-              <div className="flex h-full items-center justify-center">
-                Loading...
-              </div>
+              <Suspense fallback={<div className="flex h-full items-center justify-center">Loading...</div>}>
+                <Excalidraw
+                  onChange={onChange}
+                  excalidrawAPI={excalidrawAPIRefCallback}
+                  initialData={{
+                    appState: initialAppState || { isLoading: false },
+                    elements: initialElements,
+                    files: initialFiles,
+                  }}
+                />
+              </Suspense>
               <div className="absolute  bottom-5 right-1/2 z-10 flex translate-x-1/2 gap-2">
                 <Button variant="outline" onClick={onClose}>
                   Discard

@@ -8,8 +8,9 @@
  *
  */
 
-import { useCallback, useEffect, useMemo, useState, JSX } from "react";
-import dynamic from "next/dynamic";
+import { useCallback, useEffect, useMemo, useState, JSX, Suspense } from "react";
+import { createPortal } from "react-dom";
+import { lazy } from "react";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import {
@@ -21,10 +22,10 @@ import { TextNode } from "lexical";
 import { CircleUserRoundIcon } from "lucide-react";
 
 import { $createMentionNode } from "@/components/editor/nodes/mention-node";
+import { Command, CommandGroup, CommandItem, CommandList } from "@/components/ui/command";
 
-const LexicalTypeaheadMenuPlugin = dynamic(
-  () => import("./default/lexical-typeahead-menu-plugin"),
-  { ssr: false }
+const LexicalTypeaheadMenuPlugin = lazy(
+  () => import("./default/lexical-typeahead-menu-plugin")
 );
 
 const PUNCTUATION =
@@ -583,7 +584,6 @@ export function MentionsPlugin(): JSX.Element | null {
   const [editor] = useLexicalComposerContext();
 
   const [queryString, setQueryString] = useState<string | null>(null);
-  console.log(setQueryString);
   const results = useMentionLookupService(queryString);
 
   const checkForSlashTriggerMatch = useBasicTypeaheadTriggerMatch("/", {
@@ -603,7 +603,6 @@ export function MentionsPlugin(): JSX.Element | null {
         .slice(0, SUGGESTION_LIST_LENGTH_LIMIT),
     [results]
   );
-  console.log(options);
 
   const onSelectOption = useCallback(
     (
@@ -622,7 +621,6 @@ export function MentionsPlugin(): JSX.Element | null {
     },
     [editor]
   );
-  console.log(onSelectOption);
   const checkForMentionMatch = useCallback(
     (text: string) => {
       const slashMatch = checkForSlashTriggerMatch(text, editor);
@@ -633,69 +631,70 @@ export function MentionsPlugin(): JSX.Element | null {
     },
     [checkForSlashTriggerMatch, editor]
   );
-  console.log(checkForMentionMatch);
 
   return (
-    // @ts-ignore
-    <LexicalTypeaheadMenuPlugin<MentionTypeaheadOption>
-      onQueryChange={setQueryString}
-      onSelectOption={onSelectOption}
-      triggerFn={checkForMentionMatch}
-      options={options}
-      menuRenderFn={(
-        anchorElementRef,
-        { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex }
-      ) => {
-        return anchorElementRef.current && results.length
-          ? createPortal(
-              <div className="fixed w-[200px] rounded-md shadow-md">
-                <Command
-                  onKeyDown={(e) => {
-                    if (e.key === "ArrowUp") {
-                      e.preventDefault();
-                      setHighlightedIndex(
-                        selectedIndex !== null
-                          ? (selectedIndex - 1 + options.length) %
-                              options.length
-                          : options.length - 1
-                      );
-                    } else if (e.key === "ArrowDown") {
-                      e.preventDefault();
-                      setHighlightedIndex(
-                        selectedIndex !== null
-                          ? (selectedIndex + 1) % options.length
-                          : 0
-                      );
-                    }
-                  }}
-                >
-                  <CommandList>
-                    <CommandGroup>
-                      {options.map((option, index) => (
-                        <CommandItem
-                          key={option.key}
-                          value={option.name}
-                          onSelect={() => {
-                            selectOptionAndCleanUp(option);
-                          }}
-                          className={`flex items-center gap-2 ${
-                            selectedIndex === index
-                              ? "bg-accent"
-                              : "!bg-transparent"
-                          }`}
-                        >
-                          {option.picture}
-                          {option.name}
-                        </CommandItem>
-                      ))}
-                    </CommandGroup>
-                  </CommandList>
-                </Command>
-              </div>,
-              anchorElementRef.current
-            )
-          : null;
-      }}
-    />
+    <Suspense fallback={<div>Loading...</div>}>
+      {/* @ts-ignore */}
+      <LexicalTypeaheadMenuPlugin<MentionTypeaheadOption>
+        onQueryChange={setQueryString}
+        onSelectOption={onSelectOption}
+        triggerFn={checkForMentionMatch}
+        options={options}
+        menuRenderFn={(
+          anchorElementRef,
+          { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex }
+        ) => {
+          return anchorElementRef.current && results.length
+            ? createPortal(
+                <div className="fixed w-[200px] rounded-md shadow-md">
+                  <Command
+                    onKeyDown={(e) => {
+                      if (e.key === "ArrowUp") {
+                        e.preventDefault();
+                        setHighlightedIndex(
+                          selectedIndex !== null
+                            ? (selectedIndex - 1 + options.length) %
+                                options.length
+                            : options.length - 1
+                        );
+                      } else if (e.key === "ArrowDown") {
+                        e.preventDefault();
+                        setHighlightedIndex(
+                          selectedIndex !== null
+                            ? (selectedIndex + 1) % options.length
+                            : 0
+                        );
+                      }
+                    }}
+                  >
+                    <CommandList>
+                      <CommandGroup>
+                        {options.map((option, index) => (
+                          <CommandItem
+                            key={option.key}
+                            value={option.name}
+                            onSelect={() => {
+                              selectOptionAndCleanUp(option);
+                            }}
+                            className={`flex items-center gap-2 ${
+                              selectedIndex === index
+                                ? "bg-accent"
+                                : "!bg-transparent"
+                            }`}
+                          >
+                            {option.picture}
+                            {option.name}
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </CommandList>
+                  </Command>
+                </div>,
+                anchorElementRef.current
+              )
+            : null;
+        }}
+      />
+    </Suspense>
   );
 }

@@ -8,9 +8,10 @@
  *
  */
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, Suspense } from "react";
+import { createPortal } from "react-dom";
 
-import dynamic from "next/dynamic";
+import { lazy } from "react";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import {
@@ -24,9 +25,10 @@ import {
   TextNode,
 } from "lexical";
 
-const LexicalTypeaheadMenuPlugin = dynamic(
-  () => import("./default/lexical-typeahead-menu-plugin"),
-  { ssr: false }
+import { Command, CommandGroup, CommandItem, CommandList } from "@/components/ui/command";
+
+const LexicalTypeaheadMenuPlugin = lazy(
+  () => import("./default/lexical-typeahead-menu-plugin")
 );
 
 class EmojiOption extends MenuOption {
@@ -66,6 +68,7 @@ export function EmojiPickerPlugin() {
   //@ts-ignore
   const [queryString, setQueryString] = useState<string | null>(null);
   const [emojis, setEmojis] = useState<Array<Emoji>>([]);
+  const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     import("../utils/emoji-list").then((file) => setEmojis(file.default));
   }, []);
@@ -127,71 +130,73 @@ export function EmojiPickerPlugin() {
     [editor]
   );
   return (
-    // @ts-ignore
-    <LexicalTypeaheadMenuPlugin<EmojiOption>
-      onQueryChange={setQueryString}
-      onSelectOption={onSelectOption}
-      triggerFn={checkForTriggerMatch}
-      options={options}
-      onOpen={() => {
-        setIsOpen(true);
-      }}
-      onClose={() => {
-        setIsOpen(false);
-      }}
-      menuRenderFn={(
-        anchorElementRef,
-        { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex }
-      ) => {
-        return anchorElementRef.current && options.length
-          ? createPortal(
-              <div className="fixed w-[200px] rounded-md shadow-md">
-                <Command
-                  onKeyDown={(e) => {
-                    if (e.key === "ArrowUp") {
-                      e.preventDefault();
-                      setHighlightedIndex(
-                        selectedIndex !== null
-                          ? (selectedIndex - 1 + options.length) %
-                              options.length
-                          : options.length - 1
-                      );
-                    } else if (e.key === "ArrowDown") {
-                      e.preventDefault();
-                      setHighlightedIndex(
-                        selectedIndex !== null
-                          ? (selectedIndex + 1) % options.length
-                          : 0
-                      );
-                    }
-                  }}
-                >
-                  <CommandList>
-                    <CommandGroup>
-                      {options.map((option, index) => (
-                        <CommandItem
-                          key={option.key}
-                          value={option.title}
-                          onSelect={() => {
-                            selectOptionAndCleanUp(option);
-                          }}
-                          className={`flex items-center gap-2 ${
-                            selectedIndex === index
-                              ? "bg-accent"
-                              : "!bg-transparent"
-                          }`}
-                        >
-                          {option.emoji} {option.title}
-                        </CommandItem>
-                      ))}
-                    </CommandGroup>
-                  </CommandList>
-                </Command>
-              </div>,
-              anchorElementRef.current
-            )
-          : null;
-      }}
-    />
+    <Suspense fallback={<div>Loading...</div>}>
+      {/* @ts-ignore */}
+      <LexicalTypeaheadMenuPlugin<EmojiOption>
+        onQueryChange={setQueryString}
+        onSelectOption={onSelectOption}
+        triggerFn={checkForTriggerMatch}
+        options={options}
+        onOpen={() => {
+          setIsOpen(true);
+        }}
+        onClose={() => {
+          setIsOpen(false);
+        }}
+        menuRenderFn={(
+          anchorElementRef,
+          { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex }
+        ) => {
+          return anchorElementRef.current && options.length
+            ? createPortal(
+                <div className="fixed w-[200px] rounded-md shadow-md">
+                  <Command
+                    onKeyDown={(e) => {
+                      if (e.key === "ArrowUp") {
+                        e.preventDefault();
+                        setHighlightedIndex(
+                          selectedIndex !== null
+                            ? (selectedIndex - 1 + options.length) %
+                                options.length
+                            : options.length - 1
+                        );
+                      } else if (e.key === "ArrowDown") {
+                        e.preventDefault();
+                        setHighlightedIndex(
+                          selectedIndex !== null
+                            ? (selectedIndex + 1) % options.length
+                            : 0
+                        );
+                      }
+                    }}
+                  >
+                    <CommandList>
+                      <CommandGroup>
+                        {options.map((option, index) => (
+                          <CommandItem
+                            key={option.key}
+                            value={option.title}
+                            onSelect={() => {
+                              selectOptionAndCleanUp(option);
+                            }}
+                            className={`flex items-center gap-2 ${
+                              selectedIndex === index
+                                ? "bg-accent"
+                                : "!bg-transparent"
+                            }`}
+                          >
+                            {option.emoji} {option.title}
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </CommandList>
+                  </Command>
+                </div>,
+                anchorElementRef.current
+              )
+            : null;
+        }}
+      />
+    </Suspense>
   );
 }

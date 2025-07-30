@@ -1,18 +1,48 @@
 {
-  "name": "text-editor-studio",
+  "name": "text-editor-studio-ts",
   "private": false,
   "version": "1.0.0",
   "type": "module",
-  "main": "index.js",
+  "description": "A powerful rich text editor built with Lexical and React",
+  "keywords": [
+    "editor",
+    "lexical",
+    "react",
+    "typescript",
+    "rich-text",
+    "wysiwyg"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles": "./dist/index.css"
+  },
   "files": [
     "dist",
-    "dist/index.js"
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build ",
+    "build": "tsc -b && vite build",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "prepublishOnly": "npm run build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
     "@excalidraw/excalidraw": "^0.18.0",
@@ -72,6 +102,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "^22.14.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
@@ -80,6 +111,7 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
+    "terser": "^5.43.1",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0"

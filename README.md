@@ -1,327 +1,224 @@
 # Text Editor Studio
 
+A powerful, feature-rich rich text editor built with Lexical and React. This editor provides a comprehensive set of tools for creating rich content with support for various media types, formatting options, and interactive elements.
+
+## Features
+
+- 🎨 **Rich Text Editing** - Full-featured text editor with formatting options
+- 📝 **Markdown Support** - Write in Markdown and see live preview
+- 🖼️ **Media Support** - Images, videos, and embedded content
+- 📊 **Tables** - Create and edit tables with ease
+- 🎯 **Mentions** - @mentions with autocomplete
+- 😊 **Emoji Picker** - Built-in emoji selection
+- 📐 **Equations** - Mathematical expressions with KaTeX
+- 🎨 **Excalidraw Integration** - Draw diagrams and sketches
+- 🔗 **Links** - Smart link handling and validation
+- 📋 **Lists** - Bulleted, numbered, and check lists
+- 🎨 **Code Blocks** - Syntax highlighting for code
+- 📱 **Responsive Design** - Works on all screen sizes
+- ♿ **Accessibility** - WCAG compliant
+- 🌙 **Theme Support** - Light and dark themes
+- 🔧 **Customizable** - Highly configurable and extensible
+
 ## Installation
 
-you should already have  package.json in you project you should have module bundlers such as vite .
-
-Install the package via npm:
 ```bash
-npm install docs_editor_test
+npm install text-editor-studio
+# or
+yarn add text-editor-studio
+# or
+pnpm add text-editor-studio
 ```
 
+## Quick Start
 
-## Using Editor Component in a React App
+```tsx
+import React from 'react';
+import { Editor } from 'text-editor-studio';
+import 'text-editor-studio/styles';
 
-> **Note:** This web component requires Remix Icon CDN  in the <head> of your HTML for proper styling and icon rendering:
->
-> ```html
-> <link
->   href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
->   rel="stylesheet"
-> />
-> ```
+function App() {
+  const handleChange = (editorState) => {
+    console.log('Editor content changed:', editorState);
+  };
 
-### Imports
-
-```js
-import "docs_editor_test/dist/index.css";
-import { Editor } from "docs_editor_test/dist/index.js";
-```
-
-### `App.jsx` Example
-
-```jsx
-import "docs_editor_test/dist/index.css";
-import { Editor } from "docs_editor_test/dist/index.js";
-import { createRoot } from "react-dom/client";
-
-function App({
-  initialState = initialValue,
-  onChange,
-  onSerializedChange,
-  onHtmlChange,
-}) {
-  // Using provided handlers or empty functions if not provided
-  const handleEditorChange = onChange || (() => {});
-  const handleSerializedChange = onSerializedChange || (() => {});
-  const handleHtmlChange = (html) => {
-    if (onHtmlChange) {
-      onHtmlChange(html);
-    }
-  };
-
-
- 
-    <Editor
-      editorSerializedState={initialState}
-      onSerializedChange={han return (dleSerializedChange)}
-      onChange={handleEditorChange}
-      onHtmlChange={handleHtmlChange}
-    />
+  return (
+    <div className="w-full max-w-4xl mx-auto p-4">
+      <Editor
+        onChange={handleChange}
+        placeholder="Start typing your content..."
+      />
+    </div>
+  );
 }
 
-
-// Define the custom element
-class ReactEditorElement extends HTMLElement {
-  constructor() {
-  }
-    super();
-    this.onChange = null;
-    this.onSerializedChange = null;
-    this.onHtmlChange = null;
-
-
-  connectedCallback() {
-    // Get initial state if provided as an attribute
-    let initialState = "";
-     editorStateAttr = thisconst.getAttribute("editorSerializedState");
-
-
-    if (editorStateAttr && editorStateAttr !== "null") {
-      try {
-        initialState = JSON.parse(editorStateAttr);
-      } catch (e) {
-        console.error("Failed to parse editor state:", e);
-      }
-    }
-
-
-    // Render React component
-    const root = createRoot(this);
-    root.render(
-      <App
-        initialState={initialState}
-        onChange={(state) => {
-          if (this.onChange) this.onChange(state);
-        }}
-        onSerializedChange={(state) => {
-          if (this.onSerializedChange) this.onSerializedChange(state);
-        }}
-        onHtmlChange={(html) => {
-          if (this.onHtmlChange) this.onHtmlChange(html);
-        }}
-      />
-    );
-  }
-}
-
-
-// Register custom element
-customElements.define("react-editor", ReactEditorElement);
 export default App;
 ```
 
+## Advanced Usage
 
-### `index.html`
+### With Custom Configuration
 
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Editor X</title>
-    <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-    rel="stylesheet"
-  />
-  <link
-  rel="stylesheet"
-  href="https://cdn.statically.io/gh/TORCH-Corp/SF-PRO-FONT/main/font/fonts.css"
-  />
-  <link
-  rel="preload"
-  href="https://cdn.statically.io/gh/TORCH-Corp/SF-PRO-FONT/main/font/SF-Pro.woff2"
-  as="font"
-  type="font/woff2"
-  crossorigin
- />
-  <style>
-    body {
-      margin: 0;
-      padding: 20px;
-      min-height: 100vh;
-    }
-    .editor-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      height: calc(100vh - 40px);
-    }
-    .editor-section, .preview-container {
-      height: 94.5%;
-      overflow-y: auto;
-    }
-    .preview-container {
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      background: white;
-    }
-    .preview-content {
-      max-width: none;
-      font-family: 'SF Pro', sans-serif;
-    }
-    react-editor {
-      height: 100%;
-      display: block;
-    }
-  </style>
-  </head>
-  <body>
-    <div class="editor-container">
-      <div class="editor-section">
-        <react-editor 
-          id="editor"
-          editorState='null'
-          editorSerializedState='null'
-        ></react-editor>
-      </div>
-<div class="preview-container">
-    <h2>Preview</h2>
-    <div id="preview" class="preview-content"></div>
-  </div>
-</div>
-<script type="module" src="/src/app.jsx"></script>
+```tsx
+import React from 'react';
+import { Editor } from 'text-editor-studio';
+import 'text-editor-studio/styles';
 
-
-<script>
-  function handleEditorChange(state) {
-    console.log('Editor state changed:', state);
-  }
-  
-  function handleSerializedChange(state) {
-    console.log('Serialized state changed:', state);
-  }
-  
-  function handleHtmlChange(html) {
-    console.log('HTML changed:', html);
-    const previewElement = document.getElementById('preview');
-    previewElement.innerHTML = html;
-  }
-  
-  window.addEventListener('DOMContentLoaded', () => {
-    const editor = document.querySelector('#editor');
-    editor.onChange = handleEditorChange;
-    editor.onSerializedChange = handleSerializedChange;
-    editor.onHtmlChange = handleHtmlChange;
-  });
-</script>
-  </body>
-</html>
-```
-## Here’s a breakdown of all available props you can use with both the React and Web Component versions:
-### Props
-
-| Prop                    | Type                     | Description                                   |
-|-------------------------|--------------------------|-----------------------------------------------|
-| `editorState`           | `EditorState`            | (optional) Full control editor state object   |
-| `editorSerializedState` | `SerializedEditorState`  | Initial JSON state                            |
-| `onChange`              | `function`               | Callback on raw state change                  |
-| `onSerializedChange`    | `function`               | Callback on serialized (JSON) state change     |
-| `onHtmlChange`          | `function`               | Callback on HTML output change                |
-
-<details>
-<summary>Short list of props</summary>
-
-- **editorState** – Raw EditorState instance  
-- **editorSerializedState** – JSON-serializable state  
-- **onChange** – `(state) => void` fires on every update  
-- **onSerializedChange** – `(json) => void`  Callback for when the serialized editor state changes
-- **onHtmlChange** – `(html) => void` Callback for when the HTML representation of the editor content changes
-
-</details>
-
-**you can have the data as sting using JSON.stringify(editorSerializedState)**
-
-## Example Prop Usage
-
-```jsx
-<Editor
-  editorSerializedState={mySerializedValue}
-  onSerializedChange={(val) => localStorage.setItem('doc', JSON.stringify(val))}
-  onHtmlChange={(html) => setPreview(html)}
-  onChange={(state) => console.log(state)}
-/>
-```
-
-## Web Component 
-
-You can use the <react-editor> web component directly in any plain HTML environment after download the package
-first in the main.jsx
-you should call the editor and the style
-
-```jsx
-import "docs_editor_test/dist/index.css";
-import { Editor } from "docs_editor_test/dist/index.js"; or import "docs_editor_test/dist/index.js";
-
-
-window.addEventListener("DOMContentLoaded", () => {
-  const editor = document.querySelector("#editor");
-  editor.onChange = (state) => {
-    console.log("Editor State", state);
-  }
-  editor.onSerializedChange = (serializedState) => {
-    console.log("Serialized State", serializedState);
+function App() {
+  const handleChange = (editorState) => {
+    console.log('Editor content changed:', editorState);
   };
-  editor.onHtmlChange = (html) => {
-    console.log("HTML Output", html);
-    document.getElementById("preview").innerHTML = html;
+
+  const handleSerializedChange = (serializedState) => {
+    // Save to database
+    saveToDatabase(serializedState);
   };
-});
+
+  const handleHtmlChange = (html) => {
+    // Get HTML output
+    console.log('HTML output:', html);
+  };
+
+  return (
+    <Editor
+      onChange={handleChange}
+      onSerializedChange={handleSerializedChange}
+      onHtmlChange={handleHtmlChange}
+      editorState={initialState} // Optional: Set initial content
+      placeholder="Start writing your story..."
+    />
+  );
+}
 ```
+
+### Web Component Usage
+
+The editor is also available as a web component for use in non-React environments:
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Lexical Web Component</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      body {
-        font-family: sans-serif;
-        padding: 2rem;
-        background: #f9f9f9;
-      }
+<html>
+<head>
+  <script type="module">
+    import 'text-editor-studio';
+  </script>
+  <link rel="stylesheet" href="text-editor-studio/styles">
+</head>
+<body>
+  <react-editor
+    placeholder="Start typing..."
+    onchange="handleChange(event)"
+  ></react-editor>
 
-      react-editor {
-        width: 100%;
-        height: 400px;
-        display: block;
-        margin-bottom: 2rem;
-      }
-
-      #preview {
-        padding: 1rem;
-        background: white;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-family: sans-serif;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Lexical Editor Web Component</h1>
-
-    <react-editor id="editor"></react-editor>
-
-    <h2>Live Preview (HTML)</h2>
-    <div id="preview">Start typing in the editor…</div>
-
-    <script type="module" src="/main.js"></script>
-  </body>
+  <script>
+    function handleChange(event) {
+      console.log('Content changed:', event.detail);
+    }
+  </script>
+</body>
 </html>
-
 ```
 
-#### props use in it 
-```html
-<react-editor id="editor"></react-editor>
-<script>
-  document.getElementById("editor").onHtmlChange = (html) => {
-    document.getElementById("preview").innerHTML = html;
-  };
-</script>
+## API Reference
+
+### Editor Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `onChange` | `(editorState: EditorState) => void` | - | Callback when editor content changes |
+| `onSerializedChange` | `(serializedState: SerializedEditorState) => void` | - | Callback with serialized editor state |
+| `onHtmlChange` | `(html: string) => void` | - | Callback with HTML output |
+| `editorState` | `EditorState` | - | Initial editor state |
+| `editorSerializedState` | `SerializedEditorState` | - | Initial serialized editor state |
+
+### Editor State
+
+The editor uses Lexical's `EditorState` for managing content. You can:
+
+- **Serialize**: Convert to JSON for storage
+- **Deserialize**: Restore from JSON
+- **Export HTML**: Get HTML output
+- **Import HTML**: Load HTML content
+
+```tsx
+import { $generateHtmlFromNodes } from '@lexical/html';
+
+// Get HTML from editor state
+const html = $generateHtmlFromNodes(editor, editorState);
+
+// Serialize for storage
+const serialized = editorState.toJSON();
 ```
+
+## Styling
+
+The editor comes with built-in Tailwind CSS styles. You can customize the appearance by:
+
+1. **Importing the default styles**:
+```tsx
+import 'text-editor-studio/styles';
+```
+
+2. **Customizing with CSS variables**:
+```css
+:root {
+  --editor-bg: #ffffff;
+  --editor-text: #000000;
+  --editor-border: #e5e7eb;
+  --editor-toolbar-bg: #f9fafb;
+}
+```
+
+3. **Using custom CSS classes**:
+```tsx
+<Editor className="my-custom-editor" />
+```
+
+## Plugins
+
+The editor includes many built-in plugins:
+
+- **AutoLinkPlugin** - Automatic link detection
+- **CodeHighlightPlugin** - Syntax highlighting
+- **EmojiPickerPlugin** - Emoji selection
+- **MentionsPlugin** - @mentions with autocomplete
+- **TablePlugin** - Table creation and editing
+- **ImagePlugin** - Image upload and management
+- **ExcalidrawPlugin** - Diagram creation
+- **EquationsPlugin** - Mathematical expressions
+- **PollPlugin** - Interactive polls
+- **LayoutPlugin** - Multi-column layouts
+
+## Browser Support
+
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+If you encounter any issues or have questions, please:
+
+1. Check the [documentation](https://github.com/yourusername/text-editor-studio)
+2. Search [existing issues](https://github.com/yourusername/text-editor-studio/issues)
+3. Create a [new issue](https://github.com/yourusername/text-editor-studio/issues/new)
+
+## Acknowledgments
+
+- [Lexical](https://lexical.dev/) - The underlying editor framework
+- [React](https://reactjs.org/) - The UI library
+- [Tailwind CSS](https://tailwindcss.com/) - The styling framework
+- [Radix UI](https://www.radix-ui.com/) - The component primitives

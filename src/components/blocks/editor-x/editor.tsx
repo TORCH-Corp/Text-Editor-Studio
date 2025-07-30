@@ -16,6 +16,16 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { nodes } from "./nodes";
 import { Plugins } from "./plugins";
 
+export interface EditorProps {
+  editorState?: EditorState;
+  editorSerializedState?: SerializedEditorState;
+  onChange?: (editorState: EditorState) => void;
+  onSerializedChange?: (editorSerializedState: SerializedEditorState) => void;
+  onHtmlChange?: (html: string) => void;
+  placeholder?: string;
+  className?: string;
+}
+
 const editorConfig: InitialConfigType = {
   namespace: "Editor",
   theme: editorTheme,
@@ -31,13 +41,9 @@ function Editor({
   onChange,
   onSerializedChange,
   onHtmlChange,
-}: {
-  editorState?: EditorState;
-  editorSerializedState?: SerializedEditorState;
-  onChange?: (editorState: EditorState) => void;
-  onSerializedChange?: (editorSerializedState: SerializedEditorState) => void;
-  onHtmlChange?: (html: string) => void;
-}) {
+  placeholder,
+  className,
+}: EditorProps) {
   return (
     <div className="overflow-hidden rounded-lg border bg-background shadow">
       <LexicalComposer
