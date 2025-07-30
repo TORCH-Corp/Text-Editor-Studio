@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import dts from "vite-plugin-dts";
+// import dts from "vite-plugin-dts"; // Disabled - using postbuild script
 import path, { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
@@ -12,13 +12,14 @@ export default defineConfig({
   plugins: [
     react(),
     libInjectCss(),
-    dts({
-      include: ["src"],
-      outDir: "dist",
-      exclude: ["src/**/*.test.ts", "src/**/*.test.tsx", "src/**/*.stories.tsx"],
-      rollupTypes: true,
-      insertTypesEntry: true,
-    }),
+    // dts plugin disabled - using postbuild script for better control
+    // dts({
+    //   include: ["src"],
+    //   outDir: "dist",
+    //   exclude: ["src/**/*.test.ts", "src/**/*.test.tsx", "src/**/*.stories.tsx"],
+    //   rollupTypes: true,
+    //   insertTypesEntry: true,
+    // }),
     tailwindcss(),
   ],
   resolve: {

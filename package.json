@@ -32,7 +32,8 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && npm run postbuild",
+    "postbuild": "node scripts/generate-types.js",
     "build:types": "tsc --emitDeclarationOnly --outDir dist",
     "prepublishOnly": "npm run build",
     "lint": "eslint .",
