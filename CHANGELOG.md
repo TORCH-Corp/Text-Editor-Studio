@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.2] - 2024-12-28
+
+### 🔧 Fixed
+- **Hydration Mismatch**: Fixed React hydration error in Next.js applications
+- **Speech-to-Text Plugin**: Removed conditional export causing server/client rendering differences
+- **Share Content Plugin**: Added proper browser environment checks for window APIs
+- **Consistent Rendering**: Ensured all action plugins render consistently on server and client
+
+### 🔧 Technical Changes
+- Changed speech recognition support detection to happen after component mount
+- Added browser checks in share functionality to prevent SSR errors
+- Improved component export consistency across action plugins
+
 ## [1.1.1] - 2024-12-28
 
 ### 🔧 Fixed

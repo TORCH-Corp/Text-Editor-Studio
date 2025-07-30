@@ -52,19 +52,24 @@ const VOICE_COMMANDS: Readonly<
   },
 }
 
-export const SUPPORT_SPEECH_RECOGNITION: boolean =
-  CAN_USE_DOM &&
-  ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)
-
 function SpeechToTextPluginImpl() {
   const [editor] = useLexicalComposerContext()
   const [isEnabled, setIsEnabled] = useState<boolean>(false)
   const [isSpeechToText, setIsSpeechToText] = useState<boolean>(false)
+  const [isSupported, setIsSupported] = useState<boolean>(false)
   const SpeechRecognition =
     // @ts-expect-error missing type
     CAN_USE_DOM && (window.SpeechRecognition || window.webkitSpeechRecognition)
   const recognition = useRef<typeof SpeechRecognition | null>(null)
   const report = useReport()
+
+  // Check for speech recognition support after component mounts (client-side only)
+  useEffect(() => {
+    setIsSupported(
+      CAN_USE_DOM &&
+      ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)
+    )
+  }, [])
 
   useEffect(() => {
     if (isEnabled && recognition.current === null) {
@@ -129,6 +134,11 @@ function SpeechToTextPluginImpl() {
     )
   }, [editor])
 
+  // Don't render anything if speech recognition is not supported
+  if (!isSupported) {
+    return null
+  }
+
   return (
     <Tooltip>
       <TooltipTrigger asChild>
@@ -151,6 +161,4 @@ function SpeechToTextPluginImpl() {
   )
 }
 
-export const SpeechToTextPlugin = SUPPORT_SPEECH_RECOGNITION
-  ? SpeechToTextPluginImpl
-  : () => null;
+export const SpeechToTextPlugin = SpeechToTextPluginImpl;

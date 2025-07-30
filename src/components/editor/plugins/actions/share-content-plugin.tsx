@@ -22,6 +22,8 @@ import { docFromHash, docToHash } from '@/components/editor/utils/doc-serializat
 export function ShareContentPlugin() {
   const [editor] = useLexicalComposerContext()
   async function shareDoc(doc: SerializedDocument): Promise<void> {
+    if (typeof window === 'undefined') return
+    
     const url = new URL(window.location.toString())
     url.hash = await docToHash(doc)
     const newUrl = url.toString()
@@ -29,6 +31,8 @@ export function ShareContentPlugin() {
     await window.navigator.clipboard.writeText(newUrl)
   }
   useEffect(() => {
+    if (typeof window === 'undefined') return
+    
     docFromHash(window.location.hash).then((doc) => {
       if (doc && doc.source === 'editor') {
         editor.setEditorState(editorStateFromSerializedDocument(editor, doc))
