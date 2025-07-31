@@ -1,0 +1,25 @@
+/* Override any remaining shadcn variables with Glare tokens */
+.ContentEditable__root {
+  background-color: var(--background-system-body-primary) !important;
+  color: var(--content-system-global-primary) !important;
+}
+
+/* Ensure all editor containers use Glare theme variables */
+[data-lexical-editor],
+[data-slot="lexical-composer"],
+.LexicalComposer__contentEditable {
+  background-color: var(--background-system-body-primary) !important;
+  color: var(--content-system-global-primary) !important;
+}
+
+/* Force theme colors on the main content editable area */
+[contenteditable="true"],
+[role="textbox"] {
+  background-color: var(--background-system-body-primary) !important;
+  color: var(--content-system-global-primary) !important;
+}
+
+/* Placeholder styling with proper theme colors */
+.ContentEditable__root .placeholder {
+  color: var(--content-system-global-secondary) !important;
+}

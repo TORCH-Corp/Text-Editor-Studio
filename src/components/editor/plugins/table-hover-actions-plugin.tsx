@@ -228,7 +228,7 @@ function TableHoverActionsContainer({
       {isShownRow && (
         <button
           className={
-            "EditorTheme__tableAddRows absolute flex w-[calc(100%-25px)] cursor-pointer items-center justify-center border-0 bg-accent hover:bg-accent/80"
+            "EditorTheme__tableAddRows absolute flex w-[calc(100%-25px)] cursor-pointer items-center justify-center border-0 bg-background-presentation-action-secondary hover:bg-background-presentation-action-hover"
           }
           style={{ ...position }}
           onClick={() => insertAction(true)}
@@ -239,7 +239,7 @@ function TableHoverActionsContainer({
       {isShownColumn && (
         <button
           className={
-            "EditorTheme__tableAddColumns absolute flex w-[calc(100%-25px)] cursor-pointer items-center justify-center border-0 bg-accent hover:bg-accent/80"
+            "EditorTheme__tableAddColumns absolute flex w-[calc(100%-25px)] cursor-pointer items-center justify-center border-0 bg-background-presentation-action-secondary hover:bg-background-presentation-action-hover"
           }
           style={{ ...position }}
           onClick={() => insertAction(false)}

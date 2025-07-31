@@ -55,7 +55,7 @@ const PopoverContent = React.forwardRef<
     <PopoverPrimitive.Portal>
       {overlayBlur ? (
         <div className="relative z-[42]" data-theme={theme}>
-          <div className="fixed top-0 left-0 flex h-full w-full items-center flex-shrink-0 bg-[rgba(16,7,25,0.32)] backdrop-blur-[8px] transition-all duration-300"></div>
+          <div className="fixed top-0 left-0 flex h-full w-full items-center flex-shrink-0 bg-background-presentation-overlay backdrop-blur-[8px] transition-all duration-300"></div>
           <PopoverPrimitive.Content
             ref={ref}
             align={align}
@@ -255,12 +255,12 @@ const popoverStyles = cva(
         SystemStyle: [
           "border-border-system-global-secondary",
           "bg-background-system-body-primary",
-          "shadow-[0px_0px_18px_0px_rgba(0,0,0,0.75)]",
+          "shadow-xl",
         ],
         PresentationStyle: [
           "border-border-presentation-global-primary",
           "bg-background-presentation-form-base",
-          "shadow-[0px_0px_10px_0px_rgba(0,0,0,0.4),0px_4px_4px_0px_rgba(0,0,0,0.2)]",
+          "shadow-lg",
         ],
       },
       overlayBlur: {

@@ -67,7 +67,7 @@ export class CollapsibleContainerNode extends ElementNode {
       });
       dom = detailsDom;
     }
-    dom.className = 'bg-background border border-gray-300 rounded-lg mb-2';
+    dom.className = 'bg-background-system-body-primary border border-border-system-global-secondary rounded-lg mb-2';
 
     return dom;
   }
@@ -122,7 +122,7 @@ export class CollapsibleContainerNode extends ElementNode {
 
   exportDOM(): DOMExportOutput {
     const element = document.createElement("details");
-    element.className = 'bg-background border border-gray-300 rounded-lg mb-2';
+    element.className = 'bg-background-system-body-primary border border-border-system-global-secondary rounded-lg mb-2';
     element.setAttribute("open", this.__open.toString());
     return { element };
   }

@@ -21,7 +21,7 @@ const TooltipContent = React.forwardRef<
       ref={ref}
       sideOffset={sideOffset}
       className={cn(
-        "z-50 overflow-hidden rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[--radix-tooltip-content-transform-origin]",
+        "z-50 overflow-hidden rounded-md bg-background-system-body-tertiary px-3 py-1.5 text-xs text-content-system-global-primary animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[--radix-tooltip-content-transform-origin]",
         className
       )}
       {...props}
@@ -43,7 +43,7 @@ const tooltipStyles = cva("typography-body-medium-regular rounded-[4px] p-1", {
   variants: {
     variant: {
       primary: "bg-background-system-body-tertiary text-content-system-global-primary",
-      highlight: "bg-gradient-to-r from-wavy-navy-900 to-wavy-navy-800 text-white"
+              highlight: "bg-background-presentation-state-information-primary text-content-system-global-primary"
     },
   },
   defaultVariants: {

@@ -80,17 +80,17 @@ function PageBreakComponent({ nodeKey }: { nodeKey: NodeKey }) {
     const pbElem = editor.getElementByKey(nodeKey);
     if (pbElem !== null) {
       if (isSelected) {
-        pbElem.classList.add("!border-[var(--editor-color-primary,#4766cb)]");
+        pbElem.classList.add("!border-border-presentation-state-focus");
         pbElem.classList.add(
-          "!after:text-[var(--editor-color-primary,#4766cb)]"
+          "!after:text-content-presentation-state-focus"
         );
         pbElem.classList.add("!before:opacity-100");
       } else {
         pbElem.classList.remove(
-          "!border-[var(--editor-color-primary,#4766cb)]"
+          "!border-border-presentation-state-focus"
         );
         pbElem.classList.remove(
-          "!after:text-[var(--editor-color-primary,#4766cb)]"
+          "!after:text-content-presentation-state-focus"
         );
         pbElem.classList.remove("!before:opacity-100");
       }
@@ -143,8 +143,8 @@ export class PageBreakNode extends DecoratorNode<JSX.Element> {
     el.className = `
       relative block w-[calc(100%+56px)] overflow-visible 
       -ml-[28px] mt-7 mb-7
-      border-0 border-t border-b border-dashed border-[var(--editor-color-secondary,#eee)]
-      bg-[var(--editor-color-secondary,#eee)]
+      border-0 border-t border-b border-dashed border-border-system-global-secondary
+      bg-background-system-body-secondary
       before:content-[''] 
       before:absolute before:top-1/2 before:-translate-y-1/2
       before:left-10 before:opacity-50
@@ -153,8 +153,8 @@ export class PageBreakNode extends DecoratorNode<JSX.Element> {
       after:absolute after:top-1/2 after:left-1/2 
       after:-translate-x-1/2 after:-translate-y-1/2
       after:block after:py-0.5 after:px-1.5
-      after:border after:border-solid after:border-[#ccc]
-      after:bg-white after:text-xs after:text-black after:font-semibold
+      after:border after:border-solid       after:border-border-system-global-secondary
+      after:bg-background-system-body-primary after:text-xs after:text-content-system-global-primary after:font-semibold
     `;
     return el;
   }

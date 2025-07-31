@@ -404,7 +404,7 @@ export default function InlineImageComponent({
           />
         </span>
         {showCaption && (
-          <div className="image-caption-container absolute bottom-1 left-0 right-0 m-0 block min-w-[100px] overflow-hidden border-t bg-white/90 p-0">
+          <div className="image-caption-container absolute bottom-1 left-0 right-0 m-0 block min-w-[100px] overflow-hidden border-t bg-background-system-body-primary/90 p-0">
             <LexicalNestedComposer initialEditor={caption}>
               <AutoFocusPlugin />
               <LinkPlugin />
@@ -413,7 +413,7 @@ export default function InlineImageComponent({
                   <ContentEditable
                     placeholder="Enter a caption..."
                     className="ImageNode__contentEditable user-select-text word-break-break-word relative block min-h-5 w-[calc(100%-20px)] cursor-text resize-none whitespace-pre-wrap border-0 p-2.5 text-sm caret-primary outline-none"
-                    placeholderClassName="ImageNode__placeholder text-sm text-muted-foreground overflow-hidden absolute top-2.5 left-2.5 pointer-events-none text-ellipsis user-select-none whitespace-nowrap inline-block"
+                    placeholderClassName="ImageNode__placeholder text-sm text-content-system-global-secondary overflow-hidden absolute top-2.5 left-2.5 pointer-events-none text-ellipsis user-select-none whitespace-nowrap inline-block"
                   />
                 }
                 ErrorBoundary={LexicalErrorBoundary}

@@ -45,7 +45,7 @@ function Editor({
   className,
 }: EditorProps) {
   return (
-    <div className="overflow-hidden rounded-lg border bg-background shadow w-full h-full max-w-full">
+    <div className="overflow-hidden rounded-lg border border-border-system-global-secondary bg-background-system-body-primary shadow w-full h-full max-w-full">
       <LexicalComposer
         initialConfig={{
           ...editorConfig,

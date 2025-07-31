@@ -364,8 +364,8 @@ You can also add custom CSS:
 }
 
 .my-editor .toolbar {
-  background: #f8f9fa;
-  border-bottom: 1px solid #dee2e6;
+  background: var(--background-presentation-form-base);
+  border-bottom: 1px solid var(--border-system-global-secondary);
 }
 ```
 

@@ -33,7 +33,7 @@ function $convertMentionElement(
   return null
 }
 
-const mentionStyle = 'background-color: rgba(24, 119, 232, 0.2)'
+const mentionStyle = 'background-color: var(--background-presentation-action-selected)'
 export class MentionNode extends TextNode {
   __mention: string
 

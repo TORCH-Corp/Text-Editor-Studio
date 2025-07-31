@@ -45,12 +45,12 @@ export function DraggableBlockPlugin({
         >
           <button
             onClick={handleSlashClick}
-            className="ml-1 p-0.5 hover:bg-gray-200 rounded-sm"
+                          className="ml-1 p-0.5 hover:bg-background-presentation-action-hover rounded-sm"
             title="slash command"
           >
             <Plus className="size-4 opacity-30" />
           </button>
-          <button className="p-0.5 hover:bg-gray-200 rounded-sm">
+                      <button className="p-0.5 hover:bg-background-presentation-action-hover rounded-sm">
             <GripVerticalIcon className="size-4 opacity-30" />
           </button>
         </div>
@@ -58,7 +58,7 @@ export function DraggableBlockPlugin({
       targetLineComponent={
         <div
           ref={targetLineRef}
-          className="pointer-events-none absolute left-0 top-0 h-1 bg-secondary-foreground opacity-0 will-change-transform"
+          className="pointer-events-none absolute left-0 top-0 h-1 bg-content-system-global-secondary opacity-0 will-change-transform"
         />
       }
       isOnMenu={isOnMenu}

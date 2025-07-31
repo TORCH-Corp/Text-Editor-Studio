@@ -104,7 +104,7 @@ const TextEditorExample: React.FC = () => {
         <div className="space-y-4">
           <h2 className="text-xl font-semibold">Live Preview</h2>
           <div 
-            className="border rounded-lg p-4 min-h-[400px] bg-white prose max-w-none"
+            className="border rounded-lg p-4 min-h-[400px] bg-background-system-body-primary prose max-w-none"
             dangerouslySetInnerHTML={{ __html: state.htmlOutput }}
           />
         </div>
@@ -116,13 +116,13 @@ const TextEditorExample: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <h3 className="font-medium mb-2">Serialized Content (JSON):</h3>
-            <pre className="bg-gray-100 p-4 rounded-lg text-sm overflow-auto max-h-40">
+            <pre className="bg-background-presentation-form-base p-4 rounded-lg text-sm overflow-auto max-h-40">
               {state.content ? JSON.stringify(state.content, null, 2) : 'No content yet...'}
             </pre>
           </div>
           <div>
             <h3 className="font-medium mb-2">HTML Output:</h3>
-            <pre className="bg-gray-100 p-4 rounded-lg text-sm overflow-auto max-h-40">
+            <pre className="bg-background-presentation-form-base p-4 rounded-lg text-sm overflow-auto max-h-40">
               {state.htmlOutput || 'No HTML output yet...'}
             </pre>
           </div>
@@ -266,7 +266,7 @@ export const FormIntegrationExample: React.FC = () => {
           id="title"
           value={formData.title}
           onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 py-2 border border-border-system-global-secondary rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Enter post title..."
           required
         />

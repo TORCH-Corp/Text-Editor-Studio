@@ -51,7 +51,7 @@ const SelectTrigger = React.forwardRef<
           {...props}
         >
           <p className={cn({
-            "[&_span]:text-[#A0A0A0]": !props.value
+            "[&_span]:text-content-system-global-secondary": !props.value
           })}>{children}</p>
 
           <Button
@@ -60,7 +60,7 @@ const SelectTrigger = React.forwardRef<
             className={cn(
               [
                 "group-aria-expanded:bg-background-presentation-action-hover",
-                "group-aria-expanded:text-white",
+                "group-aria-expanded:text-content-system-global-primary",
               ]
             )}
           >
@@ -201,7 +201,7 @@ const SelectSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     ref={ref}
-    className={cn("-mx-1 my-1 h-px bg-muted", className)}
+    className={cn("-mx-1 my-1 h-px bg-background-system-body-secondary", className)}
     {...props}
   />
 ));
@@ -245,12 +245,12 @@ const SelectContentStyles = cva(
         SystemStyle: [
           "border-border-system-global-secondary",
           "bg-background-system-body-primary",
-          "shadow-[0px_0px_18px_0px_rgba(0,0,0,0.75)]",
+          "shadow-xl",
         ],
         PresentationStyle: [
           "border-border-presentation-global-primary",
           "bg-background-presentation-form-base",
-          "shadow-[0px_0px_10px_0px_rgba(0,0,0,0.4),0px_4px_4px_0px_rgba(0,0,0,0.2)]",
+          "shadow-lg",
         ],
       },
       defaultVariants: {
@@ -367,8 +367,8 @@ const PopoverTriggerStyles = cva(
     "w-fit",
     "border",
     "transition-all duration-200 ease-in-out",
-    "hover:shadow-[0px_1px_6px_0px_rgba(0,0,0,0.30)]",
-    "focus:shadow-[0px_1px_6px_0px_rgba(0,0,0,0.30)]",
+    "hover:shadow-md",
+    "focus:shadow-md",
   ],
   {
     variants: {
@@ -381,11 +381,11 @@ const PopoverTriggerStyles = cva(
         ],
         SystemStyle: [
           "bg-black-alpha-20",
-          "text-white",
-          "border-[#2C2D2E]",
-          "hover:border-[#9748FF]",
+          "text-content-system-global-primary",
+          "border-border-system-global-secondary",
+          "hover:border-border-presentation-state-focus",
           "hover:bg-purple-alpha-10",
-          "focus:border-[#9748FF]",
+          "focus:border-border-presentation-state-focus",
           "focus:bg-purple-alpha-10",
         ],
       },

@@ -62,9 +62,9 @@ function PollOptionComponent({
   return (
     <div className="mb-2.5 flex flex-row items-center">
       <div
-        className={`relative mr-2.5 flex h-[22px] w-[22px] rounded-md border border-gray-400 ${
+        className={`relative mr-2.5 flex h-[22px] w-[22px] rounded-md border border-border-system-global-secondary ${
           checked
-            ? 'border-primary bg-primary after:pointer-events-none after:absolute after:left-2 after:top-1 after:m-0 after:block after:h-[9px] after:w-[5px] after:rotate-45 after:cursor-pointer after:border-b-2 after:border-r-2 after:border-solid after:border-white after:content-[""]'
+            ? 'border-border-presentation-action-primary bg-background-presentation-action-primary after:pointer-events-none after:absolute after:left-2 after:top-1 after:m-0 after:block after:h-[9px] after:w-[5px] after:rotate-45 after:cursor-pointer after:border-b-2 after:border-r-2 after:border-solid after:border-white after:content-[""]'
             : ""
         }`}
       >
@@ -80,12 +80,12 @@ function PollOptionComponent({
           checked={checked}
         />
       </div>
-      <div className="relative flex flex-[10px] cursor-pointer overflow-hidden rounded-md border border-primary">
+              <div className="relative flex flex-[10px] cursor-pointer overflow-hidden rounded-md border border-border-presentation-action-primary">
         <div
-          className="transition-width absolute left-0 top-0 z-0 h-full bg-accent duration-1000 ease-in-out"
+          className="transition-width absolute left-0 top-0 z-0 h-full bg-background-presentation-state-success-primary duration-1000 ease-in-out"
           style={{ width: `${votes === 0 ? 0 : (votes / totalVotes) * 100}%` }}
         />
-        <span className="absolute right-4 top-1.5 text-xs text-primary">
+        <span className="absolute right-4 top-1.5 text-xs text-content-presentation-action-primary">
           {votes > 0 && (votes === 1 ? "1 vote" : `${votes} votes`)}
         </span>
         <Input
@@ -111,7 +111,7 @@ function PollOptionComponent({
       </div>
       <button
         disabled={options.length < 3}
-        className={`relative z-0 ml-1.5 flex h-7 w-7 cursor-pointer rounded-md border-0 bg-transparent bg-[position:6px_6px] bg-no-repeat opacity-30 before:absolute before:left-[13px] before:top-1.5 before:block before:h-[15px] before:w-0.5 before:-rotate-45 before:bg-gray-400 before:content-[''] after:absolute after:left-[13px] after:top-1.5 after:block after:h-[15px] after:w-0.5 after:rotate-45 after:bg-gray-400 after:content-[''] hover:bg-gray-100 hover:opacity-100 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:opacity-30`}
+        className={`relative z-0 ml-1.5 flex h-7 w-7 cursor-pointer rounded-md border-0 bg-transparent bg-[position:6px_6px] bg-no-repeat opacity-30 before:absolute before:left-[13px] before:top-1.5 before:block before:h-[15px] before:w-0.5 before:-rotate-45 before:bg-border-system-global-secondary before:content-[''] after:absolute after:left-[13px] after:top-1.5 after:block after:h-[15px] after:w-0.5 after:rotate-45 after:bg-border-system-global-secondary after:content-[''] hover:bg-background-system-body-primary-presentation-action-hover hover:opacity-100 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:opacity-30`}
         aria-label="Remove"
         onClick={() => {
           withPollNode((node) => {
@@ -218,13 +218,13 @@ export default function PollComponent({
 
   return (
     <div
-      className={`min-w-[400px] max-w-[600px] cursor-pointer select-none rounded-lg border border-gray-200 bg-background ${
+      className={`min-w-[400px] max-w-[600px] cursor-pointer select-none rounded-lg border border-border-system-global-secondary bg-background-system-body-primary ${
         isFocused ? " outline-2 outline-primary" : ""
       }`}
       ref={ref}
     >
       <div className="m-4 cursor-default">
-        <h2 className="m-0 mb-4 text-center text-lg text-gray-600">
+        <h2 className="m-0 mb-4 text-center text-lg text-content-system-global-secondary">
           {question}
         </h2>
         {options.map((option, index) => {

@@ -1,6 +1,6 @@
 .PollNode__container {
-  border: 1px solid #eee;
-  background-color: #fcfcfc;
+  border: 1px solid var(--border-system-global-secondary);
+  background-color: var(--background-system-body-primary);
   border-radius: 10px;
   max-width: 600px;
   min-width: 400px;
@@ -8,7 +8,7 @@
   user-select: none;
 }
 .PollNode__container.focused {
-  outline: 2px solid rgb(60, 132, 244);
+  outline: 2px solid var(--border-presentation-state-focus);
 }
 .PollNode__inner {
   margin: 15px;
@@ -19,7 +19,7 @@
   margin-top: 0px;
   margin-right: 0px;
   margin-bottom: 15px;
-  color: #444;
+  color: var(--content-system-global-primary);
   text-align: center;
   font-size: 18px;
 }
@@ -32,7 +32,7 @@
 .PollNode__optionInputWrapper {
   display: flex;
   flex: 10px;
-  border: 1px solid rgb(61, 135, 245);
+  border: 1px solid var(--border-presentation-state-success);
   border-radius: 5px;
   position: relative;
   overflow: hidden;
@@ -43,7 +43,7 @@
   flex: 1px;
   border: 0px;
   padding: 7px;
-  color: rgb(61, 135, 245);
+  color: var(--content-presentation-state-success);
   background-color: transparent;
   font-weight: bold;
   outline: 0px;
@@ -51,10 +51,10 @@
 }
 .PollNode__optionInput::placeholder {
   font-weight: normal;
-  color: #999;
+  color: var(--content-system-global-secondary);
 }
 .PollNode__optionInputVotes {
-  background-color: rgb(236, 243, 254);
+  background-color: var(--background-presentation-state-success-primary);
   height: 100%;
   position: absolute;
   top: 0px;
@@ -63,7 +63,7 @@
   z-index: 0;
 }
 .PollNode__optionInputVotesCount {
-  color: rgb(61, 135, 245);
+  color: var(--content-presentation-state-success);
   position: absolute;
   right: 15px;
   font-size: 12px;
@@ -74,18 +74,18 @@
   display: flex;
   width: 22px;
   height: 22px;
-  border: 1px solid #999;
+  border: 1px solid var(--border-system-global-secondary);
   margin-right: 10px;
   border-radius: 5px;
 }
 .PollNode__optionCheckboxChecked {
-  border: 1px solid rgb(61, 135, 245);
-  background-color: rgb(61, 135, 245);
+  border: 1px solid var(--border-presentation-state-success);
+  background-color: var(--background-presentation-state-success-primary);
 }
 .PollNode__optionCheckboxChecked:after {
   content: '';
   cursor: pointer;
-  border-color: #fff;
+  border-color: var(--border-system-global-secondary);
   border-style: solid;
   position: absolute;
   display: block;
@@ -127,7 +127,7 @@
   position: absolute;
   display: block;
   content: '';
-  background-color: #999;
+  background-color: var(--background-system-body-secondary);
   width: 2px;
   height: 15px;
   top: 6px;
@@ -141,7 +141,7 @@
 }
 .PollNode__optionDelete:hover {
   opacity: 1;
-  background-color: #eee;
+  background-color: var(--background-system-body-secondary);
 }
 .PollNode__optionDeleteDisabled {
   cursor: not-allowed;

@@ -17,33 +17,33 @@ function EquationEditor(
   };
 
   return inline && forwardedRef instanceof HTMLInputElement ? (
-    <span className="EquationEditor_inputBackground bg-background">
-      <span className="EquationEditor_dollarSign text-left text-muted-foreground">
+    <span className="EquationEditor_inputBackground bg-background-system-body-primary">
+      <span className="EquationEditor_dollarSign text-left text-content-system-global-secondary">
         $
       </span>
       <input
-        className="EquationEditor_inlineEditor m-0 resize-none border-0 bg-inherit p-0 text-primary outline-none"
+        className="EquationEditor_inlineEditor m-0 resize-none border-0 bg-inherit p-0 text-content-system-global-primary outline-none"
         value={equation}
         onChange={onChange}
         autoFocus={true}
         ref={forwardedRef as RefObject<HTMLInputElement>}
       />
-      <span className="EquationEditor_dollarSign text-left text-muted-foreground">
+      <span className="EquationEditor_dollarSign text-left text-content-system-global-secondary">
         $
       </span>
     </span>
   ) : (
-    <div className="EquationEditor_inputBackground bg-background">
-      <span className="EquationEditor_dollarSign text-left text-muted-foreground">
+    <div className="EquationEditor_inputBackground bg-background-system-body-primary">
+      <span className="EquationEditor_dollarSign text-left text-content-system-global-secondary">
         {"$$\n"}
       </span>
       <textarea
-        className="EquationEditor_blockEditor m-0 w-full resize-none border-0 bg-inherit p-0 text-primary outline-none"
+        className="EquationEditor_blockEditor m-0 w-full resize-none border-0 bg-inherit p-0 text-content-system-global-primary outline-none"
         value={equation}
         onChange={onChange}
         ref={forwardedRef as RefObject<HTMLTextAreaElement>}
       />
-      <span className="EquationEditor_dollarSign text-left text-muted-foreground">
+      <span className="EquationEditor_dollarSign text-left text-content-system-global-secondary">
         {"\n$$"}
       </span>
     </div>

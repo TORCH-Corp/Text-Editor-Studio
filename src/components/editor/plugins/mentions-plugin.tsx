@@ -678,7 +678,7 @@ export function MentionsPlugin(): JSX.Element | null {
                             }}
                             className={`flex items-center gap-2 ${
                               selectedIndex === index
-                                ? "bg-accent"
+                                ? "bg-background-presentation-action-selected"
                                 : "!bg-transparent"
                             }`}
                           >

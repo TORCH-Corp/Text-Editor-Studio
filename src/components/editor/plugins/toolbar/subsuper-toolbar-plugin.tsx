@@ -3,9 +3,6 @@ import { useState } from "react";
 import { $isTableSelection } from "@lexical/table";
 import { $isRangeSelection, BaseSelection, FORMAT_TEXT_COMMAND } from "lexical";
 
-import { Button } from "../../../../../components/Button";
-
-// @ts-ignore
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 import { useToolbarContext } from "@/components/editor/context/toolbar-context";
@@ -18,9 +15,7 @@ export function SubSuperToolbarPlugin() {
 
   const $updateToolbar = (selection: BaseSelection) => {
     if ($isRangeSelection(selection) || $isTableSelection(selection)) {
-      // @ts-ignore
       setIsSubscript(selection.hasFormat("subscript"));
-      // @ts-ignore
       setIsSuperscript(selection.hasFormat("superscript"));
     }
   };
@@ -34,28 +29,28 @@ export function SubSuperToolbarPlugin() {
         isSubscript ? "subscript" : isSuperscript ? "superscript" : ""
       }
     >
-      <Button
+      <ToggleGroupItem
         value="subscript"
         aria-label="Toggle subscript"
         onClick={() => {
           activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, "subscript");
         }}
-        size={"M"}
-        variant={"BlueContStyle"}
+        size="sm"
+        className="h-8 w-8 bg-background-presentation-form-base"
       >
-        <i className="ri-subscript"></i>
-      </Button>
-      <Button
+        <i className="ri-subscript text-content-system-global-primary"></i>
+      </ToggleGroupItem>
+      <ToggleGroupItem
         value="superscript"
         aria-label="Toggle superscript"
         onClick={() => {
           activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, "superscript");
         }}
-        size={"M"}
-        variant={"BlueContStyle"}
+        size="sm"
+        className="h-8 w-8 bg-background-presentation-form-base"
       >
-        <i className="ri-superscript"></i>
-      </Button>
+        <i className="ri-superscript text-content-system-global-primary"></i>
+      </ToggleGroupItem>
     </ToggleGroup>
   );
 }

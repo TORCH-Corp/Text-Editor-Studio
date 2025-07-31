@@ -90,7 +90,7 @@ export class EquationNode extends DecoratorNode<JSX.Element> {
     element.setAttribute("data-lexical-inline", `${this.__inline}`);
     katex.render(this.__equation, element, {
       displayMode: !this.__inline, // true === block display //
-      errorColor: "#cc0000",
+      errorColor: "var(--content-presentation-state-negative-primary)",
       output: "html",
       strict: "warn",
       throwOnError: false,

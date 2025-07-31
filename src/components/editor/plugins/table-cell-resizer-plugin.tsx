@@ -377,7 +377,7 @@ function TableCellResizer({ editor }: { editor: LexicalEditor }): JSX.Element {
           styles[draggingDirection].height = `${tableRect.height}px`;
         }
 
-        styles[draggingDirection].backgroundColor = "#adf";
+        styles[draggingDirection].backgroundColor = "var(--background-presentation-action-selected)";
       }
 
       return styles;

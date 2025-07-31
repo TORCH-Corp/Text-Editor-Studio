@@ -99,7 +99,7 @@ export function ComponentPickerMenuPlugin({
           ) => {
             return anchorElementRef.current && options.length
               ? createPortal(
-                  <div className="fixed w-[250px] rounded-md shadow-md">
+                  <div className="fixed w-[250px] rounded-md shadow-md bg-background-system-body-primary border border-border-system-global-secondary">
                     <Command
                       onKeyDown={(e) => {
                         if (e.key === "ArrowUp") {
@@ -131,8 +131,8 @@ export function ComponentPickerMenuPlugin({
                               }}
                               className={`flex items-center gap-2 ${
                                 selectedIndex === index
-                                  ? "bg-accent"
-                                  : "!bg-transparent"
+                                  ? "bg-background-presentation-action-selected text-content-system-global-primary"
+                                  : "!bg-transparent text-content-system-global-primary hover:bg-background-presentation-action-hover"
                               }`}
                             >
                               {option.icon}

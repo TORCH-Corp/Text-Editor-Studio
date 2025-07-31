@@ -8,9 +8,9 @@
   margin-bottom: var(--editor-input-padding, 28px);
 
   border: none;
-  border-top: 1px dashed var(--editor-color-secondary, #eeeeee);
-  border-bottom: 1px dashed var(--editor-color-secondary, #eeeeee);
-  background-color: var(--editor-color-secondary, #eeeeee);
+  border-top: 1px dashed var(--border-system-global-secondary);
+  border-bottom: 1px dashed var(--border-system-global-secondary);
+  background-color: var(--background-system-body-secondary);
 }
 
 [type='page-break']::before {
@@ -36,17 +36,17 @@
 
   display: block;
   padding: 2px 6px;
-  border: 1px solid #ccc;
-  background-color: #fff;
+  border: 1px solid var(--border-system-global-secondary);
+  background-color: var(--background-system-body-primary);
 
   content: 'PAGE BREAK';
   font-size: 12px;
-  color: #000;
+  color: var(--content-system-global-primary);
   font-weight: 600;
 }
 
 .selected[type='page-break'] {
-  border-color: var(--editor-color-primary, #4766cb);
+  border-color: var(--border-presentation-state-focus);
 }
 
 .selected[type='page-break']::before {

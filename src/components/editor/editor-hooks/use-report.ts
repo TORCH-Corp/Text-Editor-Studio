@@ -16,7 +16,7 @@ const getElement = (): HTMLElement | null => {
     element.style.fontSize = '32px'
     element.style.transform = 'translate(-50%, -50px)'
     element.style.padding = '20px'
-    element.style.background = 'rgba(240, 240, 240, 0.4)'
+    element.style.background = 'var(--background-system-body-secondary)'
     element.style.borderRadius = '20px'
 
     if (document.body) {

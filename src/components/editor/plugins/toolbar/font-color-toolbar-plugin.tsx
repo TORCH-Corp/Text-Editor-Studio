@@ -13,12 +13,12 @@ import ColorPicker from "@/components/editor/editor-ui/colorpicker";
 export function FontColorToolbarPlugin() {
   const { activeEditor } = useToolbarContext();
 
-  const [fontColor, setFontColor] = useState("#000");
+  const [fontColor, setFontColor] = useState("var(--content-system-global-primary)");
 
   const $updateToolbar = (selection: BaseSelection) => {
     if ($isRangeSelection(selection)) {
       setFontColor(
-        $getSelectionStyleValueForProperty(selection, "color", "#000")
+        $getSelectionStyleValueForProperty(selection, "color", "var(--content-system-global-primary)")
       );
     }
   };

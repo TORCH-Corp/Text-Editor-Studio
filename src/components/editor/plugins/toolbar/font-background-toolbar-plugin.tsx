@@ -16,7 +16,7 @@ import ColorPicker from '@/components/editor/editor-ui/colorpicker'
 export function FontBackgroundToolbarPlugin() {
   const { activeEditor } = useToolbarContext()
 
-  const [bgColor, setBgColor] = useState('#fff')
+  const [bgColor, setBgColor] = useState('var(--background-system-body-primary)')
 
   const $updateToolbar = (selection: BaseSelection) => {
     if ($isRangeSelection(selection)) {
@@ -24,7 +24,7 @@ export function FontBackgroundToolbarPlugin() {
         $getSelectionStyleValueForProperty(
           selection,
           'background-color',
-          '#fff'
+          'var(--background-system-body-primary)'
         )
       )
     }

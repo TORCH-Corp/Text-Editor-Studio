@@ -27,22 +27,22 @@ const ELEMENT_FORMAT_OPTIONS: {
   };
 } = {
   left: {
-    icon: <i className="ri-align-left"></i>,
+    icon: <i className="ri-align-left text-content-system-global-primary"></i>,
     iconRTL: "left-align",
     name: "Left Align",
   },
   center: {
-    icon: <i className="ri-align-center"></i>,
+    icon: <i className="ri-align-center text-content-system-global-primary"></i>,
     iconRTL: "center-align",
     name: "Center Align",
   },
   right: {
-    icon: <i className="ri-align-right"></i>,
+    icon: <i className="ri-align-right text-content-system-global-primary"></i>,
     iconRTL: "right-align",
     name: "Right Align",
   },
   justify: {
-    icon: <i className="ri-align-justify"></i>,
+    icon: <i className="ri-align-justify text-content-system-global-primary"></i>,
     iconRTL: "justify-align",
     name: "Justify Align",
   },
@@ -110,7 +110,7 @@ export function ElementFormatToolbarPlugin() {
           variant={"default"}
           aria-label={option.name}
           size="sm"
-          className="h-8 w-8 p-0"
+          className="h-8 w-8 p-0  "
         >
           {option.icon}
         </ToggleGroupItem>
@@ -123,9 +123,9 @@ export function ElementFormatToolbarPlugin() {
         aria-label="Outdent"
         variant={"default"}
         size="sm"
-        className="h-8 w-8"
+        className="h-8 w-8 "
       >
-        <i className="ri-indent-decrease"></i>
+        <i className="ri-indent-decrease text-content-system-global-primary"></i>
       </ToggleGroupItem>
 
       <ToggleGroupItem
@@ -133,9 +133,9 @@ export function ElementFormatToolbarPlugin() {
         variant={"default"}
         aria-label="Indent"
         size="sm"
-        className="h-8 w-8"
+        className="h-8 w-8 "
       >
-        <i className="ri-indent-increase"></i>
+        <i className="ri-indent-increase text-content-system-global-primary"></i>
       </ToggleGroupItem>
     </ToggleGroup>
   );

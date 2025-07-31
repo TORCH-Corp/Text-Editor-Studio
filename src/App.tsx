@@ -42,8 +42,8 @@ export default function EditorDemo() {
   console.log("HTML Content:", htmlContent);
 
     return (
-    <div className="h-screen w-screen overflow-x-hidden overflow-y-hidden bg-background">
-      <div className="h-full w-full max-w-full p-2 md:p-4 overflow-x-hidden">
+    <div className="h-screen w-screen overflow-x-hidden overflow-y-hidden bg-background-system-body-primary">
+      <div className="h-full w-full max-w-full p-2 md:p-4 overflow-x-hidden bg-background-system-body-primary">
         <Editor
           editorSerializedState={editorState}
           onSerializedChange={(value) => setEditorState(value)}
