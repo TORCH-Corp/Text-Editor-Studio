@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-/* this plugin are essential */
+
+/* Import editor theme CSS */
+@import "./components/editor/themes/editor-theme.css";
+
+/* Essential plugins for Tailwind CSS v4 */
 @plugin 'glare-typography';
 @plugin 'glare-themes';
 @plugin 'glare-torch-mode';

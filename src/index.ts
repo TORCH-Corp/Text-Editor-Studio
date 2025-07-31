@@ -1,6 +1,5 @@
 import { Editor, EditorWebComponent } from "./components/blocks/editor-x/editor";
 import { EditorClient } from "./components/blocks/editor-x/editor-client";
-import "./index.css";
 
 // Export the main components
 export { Editor, EditorWebComponent, EditorClient };

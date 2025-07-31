@@ -1,7 +1,7 @@
 {
   "name": "text-editor-studio-ts",
   "private": false,
-  "version": "1.1.2",
+  "version": "1.1.4",
   "type": "module",
   "description": "A powerful mobile-responsive rich text editor built with Lexical and React",
   "keywords": [
@@ -25,8 +25,7 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    },
-    "./styles": "./dist/index.css"
+    }
   },
   "files": [
     "dist",

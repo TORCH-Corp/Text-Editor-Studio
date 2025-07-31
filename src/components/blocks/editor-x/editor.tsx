@@ -6,11 +6,7 @@ import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { $generateHtmlFromNodes } from "@lexical/html";
 import { EditorState, SerializedEditorState } from "lexical";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-// Conditionally import r2wc only in browser environment
-let r2wc: any = null;
-if (typeof window !== 'undefined') {
-  r2wc = require("@r2wc/react-to-web-component");
-}
+// Dynamic import of r2wc for web component creation
 
 import { FloatingLinkContext } from "@/components/editor/context/floating-link-context";
 import { SharedAutocompleteContext } from "@/components/editor/context/shared-autocomplete-context";
@@ -97,33 +93,36 @@ function HtmlChangePlugin({ onChange }: { onChange: (html: string) => void }) {
 // Create web component from React component (browser only)
 let EditorWebComponent: any = null;
 
-if (typeof window !== 'undefined' && r2wc && typeof customElements !== 'undefined') {
-  try {
-    EditorWebComponent = r2wc.default ? r2wc.default(Editor, {
-      props: {
-        editorState: "json",
-        editorSerializedState: "json",
-        onChange: "function",
-        onSerializedChange: "function",
-        onHtmlChange: "function",
-      },
-    }) : r2wc(Editor, {
-      props: {
-        editorState: "json",
-        editorSerializedState: "json",
-        onChange: "function",
-        onSerializedChange: "function",
-        onHtmlChange: "function",
-      },
-    });
+// Async function to create web component
+async function createWebComponent() {
+  if (typeof window !== 'undefined' && typeof customElements !== 'undefined') {
+    try {
+      const r2wc = await import("@r2wc/react-to-web-component");
+      const r2wcFunction = r2wc.default || r2wc;
+      
+      EditorWebComponent = r2wcFunction(Editor, {
+        props: {
+          editorState: "json",
+          editorSerializedState: "json",
+          onChange: "function",
+          onSerializedChange: "function",
+          onHtmlChange: "function",
+        },
+      });
 
-    // Register the web component only if not already defined
-    if (!customElements.get("react-editor")) {
-      customElements.define("react-editor", EditorWebComponent);
+      // Register the web component only if not already defined
+      if (!customElements.get("react-editor")) {
+        customElements.define("react-editor", EditorWebComponent);
+      }
+    } catch (error) {
+      console.warn("Failed to create web component:", error);
     }
-  } catch (error) {
-    console.warn("Failed to create web component:", error);
   }
+}
+
+// Initialize web component when in browser environment
+if (typeof window !== 'undefined') {
+  createWebComponent();
 }
 
 // Export both the React component and the web component
