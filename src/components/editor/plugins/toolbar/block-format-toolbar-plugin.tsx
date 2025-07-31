@@ -5,14 +5,15 @@ import { $isRangeSelection, $isRootOrShadowRoot, BaseSelection } from 'lexical'
 
 import { useToolbarContext } from '@/components/editor/context/toolbar-context'
 import { useUpdateToolbarHandler } from '@/components/editor/editor-hooks/use-update-toolbar'
+
+import { blockTypeToBlockName } from '@/components/editor/plugins/toolbar/block-format/block-format-data'
+
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectTrigger,
-} from '@/components/ui/select'
-
-import { blockTypeToBlockName } from '@/components/editor/plugins/toolbar/block-format/block-format-data'
+} from '../../../../../components/Select'
 
 export function BlockFormatDropDown({
   children,
@@ -66,14 +67,15 @@ export function BlockFormatDropDown({
 
   return (
     <Select
+    
       value={blockType}
       onValueChange={(value) => {
         setBlockType(value as keyof typeof blockTypeToBlockName)
       }}
     >
-      <SelectTrigger className="h-8 w-min gap-1">
+      <SelectTrigger className="h-8 [&_span]:w-fit w-fit justify-start gap-1 [&_p]:flex [&_p]:items-center [&_p]:gap-2 [&_p]:h-full [&_p]:m-0 [&_p]:w-fit">
         {blockTypeToBlockName[blockType].icon}
-        <span>{blockTypeToBlockName[blockType].label}</span>
+        <span className='flex  h-full text-center shrink-0 items-center w-full'>{blockTypeToBlockName[blockType].label}</span>
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>{children}</SelectGroup>

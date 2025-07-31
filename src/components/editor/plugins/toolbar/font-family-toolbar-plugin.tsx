@@ -9,12 +9,12 @@ import {
 import { $getSelection, $isRangeSelection, BaseSelection } from 'lexical'
 import { TypeIcon } from 'lucide-react'
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-} from '@/components/ui/select'
+  import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+  } from '../../../../../components/Select'
 
 import { useToolbarContext } from '@/components/editor/context/toolbar-context'
 import { useUpdateToolbarHandler } from '@/components/editor/editor-hooks/use-update-toolbar'
@@ -69,9 +69,9 @@ export function FontFamilyToolbarPlugin() {
       }}
       aria-label={buttonAriaLabel}
     >
-      <SelectTrigger className="h-8 w-min gap-1">
+      <SelectTrigger className="h-8 [&_span]:w-fit w-fit justify-start gap-1 [&_p]:flex [&_p]:items-center [&_p]:gap-2 [&_p]:h-full [&_p]:m-0 [&_p]:w-fit">
         <TypeIcon className="size-4" />
-        <span>{fontFamily}</span>
+        <span className='flex  h-full text-center shrink-0 items-center w-full'>{fontFamily}</span>
       </SelectTrigger>
       <SelectContent>
         {FONT_FAMILY_OPTIONS.map((option) => (

@@ -7,7 +7,7 @@ import {
   SelectContent,
   SelectGroup,
   SelectTrigger,
-} from '@/components/ui/select'
+} from '../../../../../components/Select'
 
 import { useEditorModal } from '@/components/editor/editor-hooks/use-modal'
 
@@ -18,9 +18,9 @@ export function BlockInsertPlugin({ children }: { children: React.ReactNode }) {
     <>
       {modal}
       <Select value={''}>
-        <SelectTrigger className="h-8 w-min gap-1">
-          <PlusIcon className="size-4" />
-          <span>Insert</span>
+        <SelectTrigger className="h-8 w-fit justify-start gap-1 [&_p]:flex [&_p]:items-center [&_p]:gap-2 [&_p]:h-full [&_p]:m-0 [&_p]:w-fit">
+          <PlusIcon className="size-4 mt-0.5" />
+          <span className='flex  h-full text-center shrink-0 items-center'>Insert</span>
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>{children}</SelectGroup>

@@ -22,7 +22,8 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-} from '@/components/ui/select'
+} from '../../../../../components/Select'
+
 
 import { useToolbarContext } from '@/components/editor/context/toolbar-context'
 import { useUpdateToolbarHandler } from '@/components/editor/editor-hooks/use-update-toolbar'
@@ -99,7 +100,7 @@ export function CodeLanguageToolbarPlugin() {
 
   return (
     <Select>
-      <SelectTrigger className="h-8 w-min gap-1">
+      <SelectTrigger className="h-8 w-fit gap-1">
         <span>{getLanguageFriendlyName(codeLanguage)}</span>
       </SelectTrigger>
       <SelectContent>

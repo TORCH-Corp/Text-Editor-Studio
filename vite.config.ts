@@ -11,8 +11,7 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    // dts plugin disabled - using postbuild script for better control
-    // dts({
+    //  dts({
     //   include: ["src"],
     //   outDir: "dist",
     //   exclude: ["src/**/*.test.ts", "src/**/*.test.tsx", "src/**/*.stories.tsx"],
