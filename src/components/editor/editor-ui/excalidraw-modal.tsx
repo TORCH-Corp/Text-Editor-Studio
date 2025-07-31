@@ -19,7 +19,7 @@ import {
 import { DialogTrigger } from "@radix-ui/react-dialog";
 
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogClose, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogClose, DialogContent } from "../../../../components/Dialog";
 
 // @ts-ignore
 const Excalidraw = lazy(() => import("./excalidraw"));

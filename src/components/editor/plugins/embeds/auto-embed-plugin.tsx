@@ -19,7 +19,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { DialogFooter } from "@/components/ui/dialog";
+import { DialogFooter } from "../../../../../components/Dialog";
 import { Input } from "@/components/ui/input";
 import {
   Popover,

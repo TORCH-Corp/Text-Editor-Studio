@@ -22,7 +22,7 @@ import {
 } from "lexical";
 
 import { Button } from "@/components/ui/button";
-import { DialogFooter } from "@/components/ui/dialog";
+import { DialogFooter } from "../../../../components/Dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
