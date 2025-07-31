@@ -116,7 +116,7 @@ export function ElementFormatToolbarPlugin() {
         </ToggleGroupItem>
       ))}
 
-      <Separator orientation="vertical" className="h-8" />
+<Separator orientation="vertical" className="h-8 bg-border-presentation-global-primary" />     
       {/* Indentation toggles */}
       <ToggleGroupItem
         value="outdent"

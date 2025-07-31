@@ -146,7 +146,7 @@ export function Plugins({}) {
         {({ blockType }) => (
           <div className="flex h-[42px]  pr-2 p-[5px] gap-[2px] items-center border-b border-border-presentation-global-primary bg-background-presentation-form-header shadow-md backdrop-blur-[8px] rounded-[4px] overflow-x-auto scrollbar-hide md:overflow-x-visible min-w-0 flex-nowrap">
             <HistoryToolbarPlugin />
-            <Separator orientation="vertical" className="h-8" />
+            <Separator orientation="vertical" className="h-8 bg-border-presentation-global-primary" />
             <BlockFormatDropDown>
               <FormatParagraph />
               <FormatHeading levels={["h1", "h2", "h3"]} />
@@ -162,21 +162,20 @@ export function Plugins({}) {
               <>
                 <FontFamilyToolbarPlugin />
                 <FontSizeToolbarPlugin />
-                <Separator orientation="vertical" className="h-8" />
-                <FontFormatToolbarPlugin format="bold" />
+                <Separator orientation="vertical" className="h-8 bg-border-presentation-global-primary" />                <FontFormatToolbarPlugin format="bold" />
                 <FontFormatToolbarPlugin format="italic" />
                 <FontFormatToolbarPlugin format="underline" />
                 <FontFormatToolbarPlugin format="strikethrough" />
                 <ClearFormattingToolbarPlugin />
-                <Separator orientation="vertical" className="h-8" />
+                <Separator orientation="vertical" className="h-8 bg-border-presentation-global-primary" />
                 <SubSuperToolbarPlugin />
                 <LinkToolbarPlugin />
-                <Separator orientation="vertical" className="h-8" />
+                <Separator orientation="vertical" className="h-8 bg-border-presentation-global-primary" />
                 <FontColorToolbarPlugin />
                 <FontBackgroundToolbarPlugin />
-                <Separator orientation="vertical" className="h-8" />
+                  <Separator orientation="vertical" className="h-8 bg-border-presentation-global-primary" />
                 <ElementFormatToolbarPlugin />
-                <Separator orientation="vertical" className="h-8" />
+                <Separator orientation="vertical" className="h-8 bg-border-presentation-global-primary" />
                 <BlockInsertPlugin>
                   <InsertHorizontalRule />
                   <InsertPageBreak />
