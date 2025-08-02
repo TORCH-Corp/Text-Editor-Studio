@@ -24,7 +24,7 @@ import {
   createCommand,
 } from "lexical";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../../components/Button";
 import { DialogFooter } from "../../../../components/Dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
