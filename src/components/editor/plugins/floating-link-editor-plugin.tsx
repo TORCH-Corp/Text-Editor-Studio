@@ -33,7 +33,7 @@ import {
 import { Check, Pencil, Trash, X } from "lucide-react";
 import { createPortal } from "react-dom";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../../components/Button";
 import { Input } from "@/components/ui/input";
 
 import { useFloatingLinkContext } from "@/components/editor/context/floating-link-context";

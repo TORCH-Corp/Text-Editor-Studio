@@ -12,7 +12,7 @@ import { PopoverPortal } from "@radix-ui/react-popover";
 import type { LexicalEditor } from "lexical";
 import { FigmaIcon, TwitterIcon, YoutubeIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../../../components/Button";
 import {
   Command,
   CommandGroup,

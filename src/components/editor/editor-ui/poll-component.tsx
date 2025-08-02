@@ -16,7 +16,7 @@ import {
   NodeKey,
 } from "lexical";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../../components/Button";
 import { Input } from "@/components/ui/input";
 
 import type {

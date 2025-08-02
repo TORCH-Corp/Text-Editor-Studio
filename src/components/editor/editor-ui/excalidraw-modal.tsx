@@ -18,7 +18,7 @@ import {
 } from "@excalidraw/excalidraw/types";
 import { DialogTrigger } from "@radix-ui/react-dialog";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../../components/Button";
 import { Dialog, DialogClose, DialogContent } from "../../../../components/Dialog";
 
 // @ts-ignore

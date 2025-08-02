@@ -27,7 +27,7 @@ import {
   createCommand,
 } from "lexical";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../../components/Button";
 import {
   Select,
   SelectContent,
