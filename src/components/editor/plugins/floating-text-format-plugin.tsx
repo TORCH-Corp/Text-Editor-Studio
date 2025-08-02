@@ -200,7 +200,7 @@ function TextFormatFloatingToolbar({
             <ToggleGroupItem
               value="bold"
               aria-label="Toggle bold"
-              className="text-content-system-global-primary hover:text-content-system-global-primary data-[state=on]:text-content-system-global-primary"
+              className="text-content-system-global-primary hover:text-white data-[state=on]:text-content-system-global-primary"
               onClick={() => {
                 editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
               }}
@@ -210,7 +210,7 @@ function TextFormatFloatingToolbar({
             <ToggleGroupItem
               value="italic"
               aria-label="Toggle italic"
-              className="text-content-system-global-primary hover:text-content-system-global-primary data-[state=on]:text-content-system-global-primary"
+              className="text-content-system-global-primary hover:text-white data-[state=on]:text-content-system-global-primary"
               onClick={() => {
                 editor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic");
               }}
@@ -220,7 +220,7 @@ function TextFormatFloatingToolbar({
             <ToggleGroupItem
               value="underline"
               aria-label="Toggle underline"
-              className="text-content-system-global-primary hover:text-content-system-global-primary data-[state=on]:text-content-system-global-primary"
+              className="text-content-system-global-primary hover:text-white data-[state=on]:text-content-system-global-primary"
               onClick={() => {
                 editor.dispatchCommand(FORMAT_TEXT_COMMAND, "underline");
               }}
@@ -230,7 +230,7 @@ function TextFormatFloatingToolbar({
             <ToggleGroupItem
               value="strikethrough"
               aria-label="Toggle strikethrough"
-              className="text-content-system-global-primary hover:text-content-system-global-primary data-[state=on]:text-content-system-global-primary"
+              className="text-content-system-global-primary hover:text-white data-[state=on]:text-content-system-global-primary"
               onClick={() => {
                 editor.dispatchCommand(FORMAT_TEXT_COMMAND, "strikethrough");
               }}
@@ -241,7 +241,7 @@ function TextFormatFloatingToolbar({
             <ToggleGroupItem
               value="code"
               aria-label="Toggle code"
-              className="text-content-system-global-primary hover:text-content-system-global-primary data-[state=on]:text-content-system-global-primary"
+              className="text-content-system-global-primary hover:text-white data-[state=on]:text-content-system-global-primary"
               onClick={() => {
                 editor.dispatchCommand(FORMAT_TEXT_COMMAND, "code");
               }}
@@ -251,7 +251,7 @@ function TextFormatFloatingToolbar({
             <ToggleGroupItem
               value="link"
               aria-label="Toggle link"
-              className="text-content-system-global-primary hover:text-content-system-global-primary data-[state=on]:text-content-system-global-primary"
+              className="text-content-system-global-primary hover:text-white data-[state=on]:text-content-system-global-primary"
               onClick={insertLink}
             >
               <i className="ri-link"></i>
@@ -269,7 +269,7 @@ function TextFormatFloatingToolbar({
             <ToggleGroupItem
               value="subscript"
               aria-label="Toggle subscript"
-              className="text-content-system-global-primary hover:text-content-system-global-primary data-[state=on]:text-content-system-global-primary"
+              className="text-content-system-global-primary hover:text-white data-[state=on]:text-content-system-global-primary"
               onClick={() => {
                 editor.dispatchCommand(FORMAT_TEXT_COMMAND, "subscript");
               }}
@@ -279,7 +279,7 @@ function TextFormatFloatingToolbar({
             <ToggleGroupItem
               value="superscript"
               aria-label="Toggle superscript"
-              className="text-content-system-global-primary hover:text-content-system-global-primary data-[state=on]:text-content-system-global-primary"
+              className="text-content-system-global-primary hover:text-white data-[state=on]:text-content-system-global-primary"
               onClick={() => {
                 editor.dispatchCommand(FORMAT_TEXT_COMMAND, "superscript");
               }}
