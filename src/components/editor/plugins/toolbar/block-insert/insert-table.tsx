@@ -3,7 +3,7 @@
 import { TableIcon } from 'lucide-react'
 
 import { useToolbarContext } from '@/components/editor/context/toolbar-context'
-import { SelectItem } from '@/components/ui/select'
+import { SelectItem } from "../../../../../../components/Select" 
 
 import { InsertTableDialog } from '@/components/editor/plugins/table-plugin'
 
@@ -20,7 +20,7 @@ export function InsertTable() {
       }
 
     >
-      <div className="flex items-center gap-1 text-content-presentation-action-light-primary">
+      <div className="flex flex-nowrap items-center gap-1">
         <TableIcon className="size-4" />
         <span>Table</span>
       </div>

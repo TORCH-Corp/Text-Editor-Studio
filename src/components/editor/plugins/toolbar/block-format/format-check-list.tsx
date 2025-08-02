@@ -31,7 +31,7 @@ export function FormatCheckList() {
 
   return (
     <SelectItem value={BLOCK_FORMAT_VALUE} onPointerDown={formatCheckList}>
-      <div className='flex flex-nowrap'>
+      <div className='flex flex-nowrap items-center gap-1'>
         {blockTypeToBlockName[BLOCK_FORMAT_VALUE].icon}
         {blockTypeToBlockName[BLOCK_FORMAT_VALUE].label}
       </div>

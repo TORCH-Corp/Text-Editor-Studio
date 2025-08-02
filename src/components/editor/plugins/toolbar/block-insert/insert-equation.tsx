@@ -1,7 +1,7 @@
 import { DiffIcon } from 'lucide-react'
 
 import { useToolbarContext } from '@/components/editor/context/toolbar-context'
-import { SelectItem } from '@/components/ui/select'
+import { SelectItem } from "../../../../../../components/Select" 
 
 import { InsertEquationDialog } from '@/components/editor/plugins/equations-plugin'
 
@@ -18,7 +18,7 @@ export function InsertEquation() {
       }
 
     >
-      <div className="flex items-center gap-1 text-content-presentation-action-light-primary">
+      <div className="flex flex-nowrap items-center gap-1">
         <DiffIcon className="size-4" />
         <span>Equation</span>
       </div>

@@ -3,7 +3,7 @@
 import { ChevronRightIcon } from 'lucide-react'
 
 import { useToolbarContext } from '@/components/editor/context/toolbar-context'
-import { SelectItem } from '@/components/ui/select'
+import { SelectItem } from "../../../../../../components/Select" 
 
 import { INSERT_COLLAPSIBLE_COMMAND } from '@/components/editor/plugins/collapsible-plugin'
 
@@ -17,7 +17,7 @@ export function InsertCollapsibleContainer() {
       }
 
     >
-      <div className="flex items-center gap-1 text-content-presentation-action-light-primary">
+      <div className="flex flex-nowrap items-center gap-1">
         <ChevronRightIcon className="size-4" />
         <span>Collapsible container</span>
       </div>

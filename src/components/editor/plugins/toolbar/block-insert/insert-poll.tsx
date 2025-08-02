@@ -1,7 +1,7 @@
 import { ListChecksIcon } from 'lucide-react'
 
 import { useToolbarContext } from '@/components/editor/context/toolbar-context'
-import { SelectItem } from '@/components/ui/select'
+import { SelectItem } from "../../../../../../components/Select" 
 
 import { InsertPollDialog } from '@/components/editor/plugins/poll-plugin'
 
@@ -18,7 +18,7 @@ export function InsertPoll() {
       }
 
     >
-      <div className="flex items-center gap-1 text-content-presentation-action-light-primary">
+      <div className="flex flex-nowrap items-center gap-1">
         <ListChecksIcon className="size-4" />
         <span>Poll</span>
       </div>

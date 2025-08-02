@@ -3,7 +3,7 @@
 import { INSERT_EMBED_COMMAND } from '@lexical/react/LexicalAutoEmbedPlugin'
 
 import { useToolbarContext } from '@/components/editor/context/toolbar-context'
-import { SelectItem } from '@/components/ui/select'
+import { SelectItem } from "../../../../../../components/Select" 
 
 import { EmbedConfigs } from '@/components/editor/plugins/embeds/auto-embed-plugin'
 
@@ -18,7 +18,7 @@ export function InsertEmbeds() {
       }}
 
     >
-      <div className="flex items-center gap-1 text-content-presentation-action-light-primary">
+      <div className="flex flex-nowrap items-center gap-1">
         {embedConfig.icon}
         <span>{embedConfig.contentName}</span>
       </div>

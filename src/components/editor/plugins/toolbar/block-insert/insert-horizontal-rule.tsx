@@ -2,7 +2,7 @@ import { INSERT_HORIZONTAL_RULE_COMMAND } from '@lexical/react/LexicalHorizontal
 import { ScissorsIcon } from 'lucide-react'
 
 import { useToolbarContext } from '@/components/editor/context/toolbar-context'
-import { SelectItem } from '@/components/ui/select'
+import { SelectItem } from "../../../../../../components/Select" 
 
 export function InsertHorizontalRule() {
   const { activeEditor } = useToolbarContext()
@@ -15,7 +15,7 @@ export function InsertHorizontalRule() {
       }
 
     >
-      <div className="flex flex-nowrap">
+      <div className="flex flex-nowrap items-center gap-1">
         <ScissorsIcon className="size-4" />
         <span>Horizontal Rule</span>
       </div>

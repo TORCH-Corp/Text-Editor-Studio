@@ -1,7 +1,7 @@
 import { FileImageIcon } from 'lucide-react'
 
 import { useToolbarContext } from '@/components/editor/context/toolbar-context'
-import { SelectItem } from '@/components/ui/select'
+import { SelectItem } from "../../../../../../components/Select" 
 
 import { InsertInlineImageDialog } from '@/components/editor/plugins/inline-image-plugin'
 
@@ -21,7 +21,7 @@ export function InsertInlineImage() {
       }
 
     >
-      <div className="flex items-center gap-1 text-content-presentation-action-light-primary">
+      <div className="flex flex-nowrap items-center gap-1">
         <FileImageIcon className="size-4" />
         <span>Inline Image</span>
       </div>

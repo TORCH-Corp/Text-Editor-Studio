@@ -45,12 +45,12 @@ export function DraggableBlockPlugin({
         >
           <button
             onClick={handleSlashClick}
-                          className="ml-1 p-0.5 rounded-sm"
+            className="ml-1 p-0.5 rounded-sm cursor-pointer"
             title="slash command"
           >
             <Plus className="size-4 opacity-30" />
           </button>
-                      <button className="p-0.5 rounded-sm">
+          <button className="p-0.5 rounded-sm cursor-pointer">
             <GripVerticalIcon className="size-4 opacity-30" />
           </button>
         </div>

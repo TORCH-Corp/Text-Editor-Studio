@@ -3,7 +3,7 @@
 import { SquareSplitVerticalIcon } from 'lucide-react'
 
 import { useToolbarContext } from '@/components/editor/context/toolbar-context'
-import { SelectItem } from '@/components/ui/select'
+import { SelectItem } from "../../../../../../components/Select" 
 
 import { INSERT_PAGE_BREAK } from '@/components/editor/plugins/page-break-plugin'
 
@@ -18,7 +18,7 @@ export function InsertPageBreak() {
       }
 
     >
-      <div className="flex items-center gap-1 text-content-presentation-action-light-primary">
+      <div className="flex flex-nowrap items-center gap-1">
         <SquareSplitVerticalIcon className="size-4" />
         <span>Page Break</span>
       </div>

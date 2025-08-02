@@ -1,7 +1,7 @@
 import { Columns3Icon } from 'lucide-react'
 
 import { useToolbarContext } from '@/components/editor/context/toolbar-context'
-import { SelectItem } from '@/components/ui/select'
+import { SelectItem } from "../../../../../../components/Select" 
 
 import { InsertLayoutDialog } from '@/components/editor/plugins/layout-plugin'
 
@@ -18,7 +18,7 @@ export function InsertColumnsLayout() {
       }
 
     >
-      <div className="flex items-center gap-1 text-content-presentation-action-light-primary">
+      <div className="flex flex-nowrap items-center gap-1">
         <Columns3Icon className="size-4" />
         <span>Columns Layout</span>
       </div>
