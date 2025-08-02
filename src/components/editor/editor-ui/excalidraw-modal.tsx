@@ -232,7 +232,7 @@ export function ExcalidrawModal({
                 />
               </Suspense>
               <div className="absolute  bottom-5 right-1/2 z-10 flex translate-x-1/2 gap-2">
-                <Button variant="outline" onClick={onClose}>
+                <Button  onClick={onClose}>
                   Discard
                 </Button>
                 <Button onClick={save}>Save</Button>

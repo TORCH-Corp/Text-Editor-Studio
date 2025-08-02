@@ -241,7 +241,7 @@ export default function PollComponent({
           );
         })}
         <div className="flex justify-center">
-          <Button onClick={addOption} size="sm">
+          <Button onClick={addOption} size="M">
             Add Option
           </Button>
         </div>

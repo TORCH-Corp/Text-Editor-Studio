@@ -234,8 +234,8 @@ function FloatingLinkEditor({
             className="flex-grow"
           />
           <Button
-            size="icon"
-            variant="ghost"
+            size="M"
+            variant={"BlueContStyle"}
             onClick={() => {
               setIsLinkEditMode(false);
               setIsLink(false);
@@ -245,7 +245,8 @@ function FloatingLinkEditor({
             <X className="h-4 w-4" />
           </Button>
           <Button
-            size="icon"
+            size="M"
+            variant={"BlueContStyle"}
             onClick={handleLinkSubmission}
             className="shrink-0"
           >
@@ -264,8 +265,8 @@ function FloatingLinkEditor({
           </a>
           <div className="flex">
             <Button
-              size="icon"
-              variant="ghost"
+              size="M"
+              variant={"BlueContStyle"}
               onClick={() => {
                 setEditedLinkUrl(linkUrl);
                 setIsLinkEditMode(true);
@@ -274,8 +275,8 @@ function FloatingLinkEditor({
               <Pencil className="h-4 w-4" />
             </Button>
             <Button
-              size="icon"
-              variant="destructive"
+              size="M"
+              variant={"RedContStyle"}
               onClick={() => {
                 editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
               }}
