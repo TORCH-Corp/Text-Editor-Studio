@@ -21,8 +21,8 @@ export function FormatParagraph() {
   }
 
   return (
-    <SelectItem value={BLOCK_FORMAT_VALUE} onPointerDown={formatParagraph} className="hover:!text-content-presentation-action-light-primary">
-      <div className="flex items-center gap-1 font-normal text-content-presentation-action-light-primary hover:text-content-presentation-action-light-primary">
+    <SelectItem value={BLOCK_FORMAT_VALUE} onPointerDown={formatParagraph}>
+      <div className='flex flex-nowrap'>
         {blockTypeToBlockName[BLOCK_FORMAT_VALUE].icon}
         {blockTypeToBlockName[BLOCK_FORMAT_VALUE].label}
       </div>

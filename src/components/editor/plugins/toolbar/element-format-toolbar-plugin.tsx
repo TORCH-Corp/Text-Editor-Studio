@@ -27,22 +27,22 @@ const ELEMENT_FORMAT_OPTIONS: {
   };
 } = {
   left: {
-    icon: <i className="ri-align-left text-content-system-global-primary"></i>,
+    icon: <i className="ri-align-left"></i>,
     iconRTL: "left-align",
     name: "Left Align",
   },
   center: {
-    icon: <i className="ri-align-center text-content-system-global-primary"></i>,
+    icon: <i className="ri-align-center"></i>,
     iconRTL: "center-align",
     name: "Center Align",
   },
   right: {
-    icon: <i className="ri-align-right text-content-system-global-primary"></i>,
+    icon: <i className="ri-align-right"></i>,
     iconRTL: "right-align",
     name: "Right Align",
   },
   justify: {
-    icon: <i className="ri-align-justify text-content-system-global-primary"></i>,
+    icon: <i className="ri-align-justify"></i>,
     iconRTL: "justify-align",
     name: "Justify Align",
   },
@@ -101,13 +101,14 @@ export function ElementFormatToolbarPlugin() {
       defaultValue={elementFormat}
       onValueChange={handleValueChange}
       className="flex gap-1"
+      variant="BlueContStyle"
     >
       {/* Alignment toggles */}
       {Object.entries(ELEMENT_FORMAT_OPTIONS).map(([value, option]) => (
         <ToggleGroupItem
           key={value}
           value={value}
-          variant={"default"}
+          variant="BlueContStyle"
           aria-label={option.name}
           size="sm"
           className="h-8 w-8 p-0  "
@@ -121,21 +122,21 @@ export function ElementFormatToolbarPlugin() {
       <ToggleGroupItem
         value="outdent"
         aria-label="Outdent"
-        variant={"default"}
+        variant="BlueContStyle"
         size="sm"
         className="h-8 w-8 "
       >
-        <i className="ri-indent-decrease text-content-system-global-primary"></i>
+        <i className="ri-indent-decrease"></i>
       </ToggleGroupItem>
 
       <ToggleGroupItem
         value="indent"
-        variant={"default"}
+        variant="BlueContStyle"
         aria-label="Indent"
         size="sm"
         className="h-8 w-8 "
       >
-        <i className="ri-indent-increase text-content-system-global-primary"></i>
+        <i className="ri-indent-increase"></i>
       </ToggleGroupItem>
     </ToggleGroup>
   );

@@ -22,8 +22,8 @@ export function FormatQuote() {
   }
 
   return (
-    <SelectItem value="quote" onPointerDown={formatQuote} className="hover:!text-content-presentation-action-light-primary">
-      <div className="flex items-center gap-1 font-normal text-content-presentation-action-light-primary hover:text-content-presentation-action-light-primary">
+    <SelectItem value="quote" onPointerDown={formatQuote}>
+      <div className='flex flex-nowrap'>
         {blockTypeToBlockName[BLOCK_FORMAT_VALUE].icon}
         {blockTypeToBlockName[BLOCK_FORMAT_VALUE].label}
       </div>

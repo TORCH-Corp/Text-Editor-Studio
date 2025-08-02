@@ -25,31 +25,34 @@ export function SubSuperToolbarPlugin() {
   return (
     <ToggleGroup
       type="single"
+      variant="BlueContStyle"
       defaultValue={
         isSubscript ? "subscript" : isSuperscript ? "superscript" : ""
       }
     >
       <ToggleGroupItem
         value="subscript"
+        variant="BlueContStyle"
         aria-label="Toggle subscript"
         onClick={() => {
           activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, "subscript");
         }}
         size="sm"
-        className="h-8 w-8 bg-background-presentation-form-base"
+        className="h-8 w-8"
       >
-        <i className="ri-subscript text-content-system-global-primary"></i>
+        <i className="ri-subscript"></i>
       </ToggleGroupItem>
       <ToggleGroupItem
         value="superscript"
+        variant="BlueContStyle"
         aria-label="Toggle superscript"
         onClick={() => {
           activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, "superscript");
         }}
         size="sm"
-        className="h-8 w-8 bg-background-presentation-form-base"
+        className="h-8 w-8"
       >
-        <i className="ri-superscript text-content-system-global-primary"></i>
+        <i className="ri-superscript"></i>
       </ToggleGroupItem>
     </ToggleGroup>
   );

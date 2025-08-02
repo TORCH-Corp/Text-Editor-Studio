@@ -12,6 +12,16 @@ const toggleVariants = cva(
         default: "bg-transparent",
         outline:
           "border border-border-system-global-secondary bg-transparent shadow-xs hover:bg-background-presentation-action-hover hover:text-content-system-global-primary",
+        BlueContStyle: [
+          "text-content-presentation-action-light-primary",
+          "border-transparent bg-transparent",
+          "hover:bg-background-presentation-action-contstyle-hover",
+          "hover:text-content-presentation-action-information-hover",
+          "focus:lg:border focus:lg:border-border-presentation-state-focus",
+          "focus:lg:bg-background-presentation-action-borderstyle",
+          "active:bg-background-presentation-action-contstyle-hover active:text-content-presentation-action-information-hover",
+          "data-[state=on]:bg-background-presentation-action-contstyle-hover data-[state=on]:text-content-presentation-action-information-hover",
+        ],
       },
       size: {
         default: "h-9 px-2 min-w-9",

@@ -15,7 +15,7 @@ export function InsertHorizontalRule() {
       }
 
     >
-      <div className="flex items-center gap-1 text-content-presentation-action-light-primary">
+      <div className="flex flex-nowrap">
         <ScissorsIcon className="size-4" />
         <span>Horizontal Rule</span>
       </div>

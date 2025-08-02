@@ -20,8 +20,8 @@ export function FormatHeading({ levels = [] }: { levels: HeadingTagType[] }) {
   }
 
   return levels.map((level) => (
-    <SelectItem key={level} value={level} onPointerDown={() => formatHeading(level)} className="hover:!text-content-presentation-action-light-primary">
-      <div className="flex items-center gap-1 font-normal text-content-presentation-action-light-primary hover:text-content-presentation-action-light-primary">
+    <SelectItem key={level} value={level} onPointerDown={() => formatHeading(level)} >
+      <div className='flex flex-nowrap'>
         {blockTypeToBlockName[level].icon}
         {blockTypeToBlockName[level].label}
       </div>
