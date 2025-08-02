@@ -24,7 +24,7 @@ import {
   SELECTION_CHANGE_COMMAND,
 } from "lexical";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../../components/Button"
 import { Checkbox } from "@/components/ui/checkbox";
 import { DialogFooter } from "../../../../components/Dialog";
 import { Input } from "@/components/ui/input";
@@ -35,7 +35,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "../../../../components/Select"
 
 import { useEditorModal } from "@/components/editor/editor-hooks/use-modal";
 import type { Position } from "@/components/editor/nodes/inline-image-node";
@@ -370,7 +370,7 @@ export default function InlineImageComponent({
           {isEditable && (
             <Button
               className="image-edit-button absolute right-1 top-1"
-              variant="outline"
+              variant={"BorderStyle"}
               ref={buttonRef}
               onClick={() => {
                 showModal("Update Inline Image", (onClose) => (

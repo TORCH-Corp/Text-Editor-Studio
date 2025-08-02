@@ -22,7 +22,7 @@ import {
   createCommand,
 } from "lexical";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../../components/Button"
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -32,7 +32,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "../../../../components/Select"
 
 import type { Position } from "@/components/editor/nodes/inline-image-node";
 import {
@@ -166,11 +166,13 @@ export function InlineImagePlugin(): JSX.Element | null {
       editor.registerCommand<InsertInlineImagePayload>(
         INSERT_INLINE_IMAGE_COMMAND,
         (payload) => {
-          const imageNode = $createInlineImageNode(payload);
-          $insertNodes([imageNode]);
-          if ($isRootOrShadowRoot(imageNode.getParentOrThrow())) {
-            $wrapNodeInElement(imageNode, $createParagraphNode).selectEnd();
-          }
+          editor.update(() => {
+            const imageNode = $createInlineImageNode(payload);
+            $insertNodes([imageNode]);
+            if ($isRootOrShadowRoot(imageNode.getParentOrThrow())) {
+              $wrapNodeInElement(imageNode, $createParagraphNode).selectEnd();
+            }
+          });
 
           return true;
         },
@@ -259,13 +261,15 @@ function $onDrop(event: DragEvent, editor: LexicalEditor): boolean {
   }
   event.preventDefault();
   if (canDropImage(event)) {
-    const range = getDragSelection(event);
-    node.remove();
-    const rangeSelection = $createRangeSelection();
-    if (range !== null && range !== undefined) {
-      rangeSelection.applyDOMRange(range);
-    }
-    $setSelection(rangeSelection);
+    editor.update(() => {
+      const range = getDragSelection(event);
+      node.remove();
+      const rangeSelection = $createRangeSelection();
+      if (range !== null && range !== undefined) {
+        rangeSelection.applyDOMRange(range);
+      }
+      $setSelection(rangeSelection);
+    });
     editor.dispatchCommand(INSERT_INLINE_IMAGE_COMMAND, data);
   }
   return true;

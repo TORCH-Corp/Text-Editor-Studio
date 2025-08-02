@@ -30,7 +30,7 @@ import {
   createCommand,
 } from "lexical";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../../components/Button"
 import { DialogFooter } from "../../../../components/Dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -216,11 +216,13 @@ export function ImagesPlugin({
       editor.registerCommand<InsertImagePayload>(
         INSERT_IMAGE_COMMAND,
         (payload) => {
-          const imageNode = $createImageNode(payload);
-          $insertNodes([imageNode]);
-          if ($isRootOrShadowRoot(imageNode.getParentOrThrow())) {
-            $wrapNodeInElement(imageNode, $createParagraphNode).selectEnd();
-          }
+          editor.update(() => {
+            const imageNode = $createImageNode(payload);
+            $insertNodes([imageNode]);
+            if ($isRootOrShadowRoot(imageNode.getParentOrThrow())) {
+              $wrapNodeInElement(imageNode, $createParagraphNode).selectEnd();
+            }
+          });
 
           return true;
         },
@@ -310,13 +312,15 @@ function $onDrop(event: DragEvent, editor: LexicalEditor): boolean {
   }
   event.preventDefault();
   if (canDropImage(event)) {
-    const range = getDragSelection(event);
-    node.remove();
-    const rangeSelection = $createRangeSelection();
-    if (range !== null && range !== undefined) {
-      rangeSelection.applyDOMRange(range);
-    }
-    $setSelection(rangeSelection);
+    editor.update(() => {
+      const range = getDragSelection(event);
+      node.remove();
+      const rangeSelection = $createRangeSelection();
+      if (range !== null && range !== undefined) {
+        rangeSelection.applyDOMRange(range);
+      }
+      $setSelection(rangeSelection);
+    });
     editor.dispatchCommand(INSERT_IMAGE_COMMAND, data);
   }
   return true;
