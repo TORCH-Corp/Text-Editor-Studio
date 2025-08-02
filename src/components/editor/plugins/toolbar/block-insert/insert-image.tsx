@@ -18,9 +18,9 @@ export function InsertImage() {
           <InsertImageDialog activeEditor={activeEditor} onClose={onClose} />
         ));
       }}
-      className=""
+
     >
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1 text-content-presentation-action-light-primary">
         <ImageIcon className="size-4" />
         <span>Image</span>
       </div>

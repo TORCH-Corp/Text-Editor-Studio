@@ -141,10 +141,20 @@ export function Plugins({}) {
   };
 
   return (
-    <div className="relative min-w-0 flex flex-col h-full max-w-full overflow-x-hidden">
+    <div className="relative w-full flex flex-col h-full max-w-full overflow-hidden">
       <ToolbarPlugin>
         {({ blockType }) => (
-          <div className="flex h-[42px]  pr-2 p-[5px] gap-[2px] items-center border-b border-border-presentation-global-primary bg-background-presentation-form-header shadow-md backdrop-blur-[8px] rounded-[4px] overflow-x-auto scrollbar-hide md:overflow-x-visible min-w-0 flex-nowrap">
+                     <div 
+             className="flex h-[42px] gap-1 pr-2 p-[5px] items-center border-b border-border-presentation-global-primary bg-background-presentation-form-header shadow-md backdrop-blur-[8px] rounded-[4px] overflow-x-auto overflow-y-hidden scrollbar-hide lg:overflow-x-visible min-w-0 max-w-full w-full flex-nowrap scroll-smooth overscroll-x-contain touch-pan-x"
+             onWheel={(e) => {
+               const container = e.currentTarget;
+               const canScrollHorizontally = container.scrollWidth > container.clientWidth;
+               if (canScrollHorizontally && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                 e.preventDefault();
+                 container.scrollLeft += e.deltaY;
+               }
+             }}
+           >
             <HistoryToolbarPlugin />
             <Separator orientation="vertical" className="h-8 bg-border-presentation-global-primary" />
             <BlockFormatDropDown>
@@ -156,13 +166,15 @@ export function Plugins({}) {
               <FormatCodeBlock />
               <FormatQuote />
             </BlockFormatDropDown>
+            
             {blockType === "code" ? (
               <CodeLanguageToolbarPlugin />
             ) : (
               <>
                 <FontFamilyToolbarPlugin />
                 <FontSizeToolbarPlugin />
-                <Separator orientation="vertical" className="h-8 bg-border-presentation-global-primary" />                <FontFormatToolbarPlugin format="bold" />
+                <Separator orientation="vertical" className="h-8 bg-border-presentation-global-primary" />
+                <FontFormatToolbarPlugin format="bold" />
                 <FontFormatToolbarPlugin format="italic" />
                 <FontFormatToolbarPlugin format="underline" />
                 <FontFormatToolbarPlugin format="strikethrough" />
@@ -192,7 +204,7 @@ export function Plugins({}) {
           </div>
         )}
       </ToolbarPlugin>
-      <div className="relative flex-1 min-h-0 bg-background-system-body-primary">
+      <div className="relative flex-1 min-h-0 bg-background-system-body-primary w-full overflow-x-hidden">
         <AutoFocusPlugin />
         <RichTextPlugin
           contentEditable={

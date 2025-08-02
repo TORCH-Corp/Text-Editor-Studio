@@ -13,9 +13,9 @@ export function InsertHorizontalRule() {
       onPointerUp={() =>
         activeEditor.dispatchCommand(INSERT_HORIZONTAL_RULE_COMMAND, undefined)
       }
-      className=""
+
     >
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1 text-content-presentation-action-light-primary">
         <ScissorsIcon className="size-4" />
         <span>Horizontal Rule</span>
       </div>

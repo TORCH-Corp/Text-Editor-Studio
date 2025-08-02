@@ -16,9 +16,9 @@ export function InsertColumnsLayout() {
           <InsertLayoutDialog activeEditor={activeEditor} onClose={onClose} />
         ))
       }
-      className=""
+
     >
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1 text-content-presentation-action-light-primary">
         <Columns3Icon className="size-4" />
         <span>Columns Layout</span>
       </div>

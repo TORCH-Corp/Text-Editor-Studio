@@ -69,9 +69,9 @@ export function FontFamilyToolbarPlugin() {
       }}
       aria-label={buttonAriaLabel}
     >
-      <SelectTrigger className="h-8 [&_span]:w-fit w-fit justify-start gap-1 [&_p]:flex [&_p]:items-center [&_p]:gap-2 [&_p]:h-full [&_p]:m-0 [&_p]:w-fit">
+      <SelectTrigger className="h-8 [&_span]:w-fit [&_span]:text-content-presentation-action-light-primary w-fit justify-start gap-1 [&_p]:flex [&_p]:items-center [&_p]:gap-2 [&_p]:h-full [&_p]:m-0 [&_p]:w-fit">
         <TypeIcon className="size-4" />
-        <span className='flex  h-full text-center shrink-0 items-center w-full'>{fontFamily}</span>
+        <span className='flex h-full text-center shrink-0 items-center w-full'>{fontFamily}</span>
       </SelectTrigger>
       <SelectContent>
         {FONT_FAMILY_OPTIONS.map((option) => (

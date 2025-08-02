@@ -100,8 +100,8 @@ export function CodeLanguageToolbarPlugin() {
 
   return (
     <Select>
-      <SelectTrigger className="h-8 w-fit gap-1">
-        <span>{getLanguageFriendlyName(codeLanguage)}</span>
+      <SelectTrigger className="h-8 [&_span]:w-fit [&_span]:text-content-presentation-action-light-primary w-fit justify-start gap-1 [&_p]:flex [&_p]:items-center [&_p]:gap-2 [&_p]:h-full [&_p]:m-0 [&_p]:w-fit">
+        <span className='flex h-full text-center shrink-0 items-center w-full'>{getLanguageFriendlyName(codeLanguage)}</span>
       </SelectTrigger>
       <SelectContent>
         {CODE_LANGUAGE_OPTIONS.map(([value, label]) => (

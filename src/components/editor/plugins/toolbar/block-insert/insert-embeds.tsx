@@ -16,9 +16,9 @@ export function InsertEmbeds() {
       onPointerUp={() => {
         activeEditor.dispatchCommand(INSERT_EMBED_COMMAND, embedConfig.type)
       }}
-      className=""
+
     >
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1 text-content-presentation-action-light-primary">
         {embedConfig.icon}
         <span>{embedConfig.contentName}</span>
       </div>

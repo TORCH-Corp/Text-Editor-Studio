@@ -178,12 +178,14 @@ function TextFormatFloatingToolbar({
   return (
     <div
       ref={popupCharStylesEditorRef}
-      className="absolute left-0 top-0 z-10 flex gap-1 rounded-md border p-1 opacity-0 shadow-md transition-opacity duration-300 will-change-transform bg-background-system-body-primary"
+      className="absolute left-0 top-0 z-50 flex gap-0.5 rounded-[4px] border border-border-system-global-secondary p-1 opacity-0 shadow-md transition-opacity duration-200 will-change-transform bg-background-system-body-primary"
     >
       {editor.isEditable() && (
         <>
           <ToggleGroup
             type="multiple"
+            size="sm"
+            className="gap-0"
             defaultValue={[
               isBold ? "bold" : "",
               isItalic ? "italic" : "",
@@ -198,66 +200,68 @@ function TextFormatFloatingToolbar({
             <ToggleGroupItem
               value="bold"
               aria-label="Toggle bold"
+              className="text-content-system-global-primary hover:text-content-system-global-primary data-[state=on]:text-content-system-global-primary"
               onClick={() => {
                 editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
               }}
-              size="sm"
             >
               <i className="ri-bold"></i>
             </ToggleGroupItem>
             <ToggleGroupItem
               value="italic"
               aria-label="Toggle italic"
+              className="text-content-system-global-primary hover:text-content-system-global-primary data-[state=on]:text-content-system-global-primary"
               onClick={() => {
                 editor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic");
               }}
-              size="sm"
             >
               <i className="ri-italic"></i>
             </ToggleGroupItem>
             <ToggleGroupItem
               value="underline"
               aria-label="Toggle underline"
+              className="text-content-system-global-primary hover:text-content-system-global-primary data-[state=on]:text-content-system-global-primary"
               onClick={() => {
                 editor.dispatchCommand(FORMAT_TEXT_COMMAND, "underline");
               }}
-              size="sm"
             >
               <i className="ri-underline"></i>
             </ToggleGroupItem>
             <ToggleGroupItem
               value="strikethrough"
               aria-label="Toggle strikethrough"
+              className="text-content-system-global-primary hover:text-content-system-global-primary data-[state=on]:text-content-system-global-primary"
               onClick={() => {
                 editor.dispatchCommand(FORMAT_TEXT_COMMAND, "strikethrough");
               }}
-              size="sm"
             >
               <i className="ri-strikethrough"></i>
             </ToggleGroupItem>
-            <Separator orientation="vertical" />
+            <Separator orientation="vertical" className="mx-0.5 h-5 bg-border-system-global-secondary" />
             <ToggleGroupItem
               value="code"
               aria-label="Toggle code"
+              className="text-content-system-global-primary hover:text-content-system-global-primary data-[state=on]:text-content-system-global-primary"
               onClick={() => {
                 editor.dispatchCommand(FORMAT_TEXT_COMMAND, "code");
               }}
-              size="sm"
             >
               <i className="ri-code-line"></i>
             </ToggleGroupItem>
             <ToggleGroupItem
               value="link"
               aria-label="Toggle link"
+              className="text-content-system-global-primary hover:text-content-system-global-primary data-[state=on]:text-content-system-global-primary"
               onClick={insertLink}
-              size="sm"
             >
               <i className="ri-link"></i>
             </ToggleGroupItem>
-            <Separator orientation="vertical" />
+            <Separator orientation="vertical" className="mx-0.5 h-5 bg-border-system-global-secondary" />
           </ToggleGroup>
           <ToggleGroup
             type="single"
+            size="sm"
+            className="gap-0"
             defaultValue={
               isSubscript ? "subscript" : isSuperscript ? "superscript" : ""
             }
@@ -265,20 +269,20 @@ function TextFormatFloatingToolbar({
             <ToggleGroupItem
               value="subscript"
               aria-label="Toggle subscript"
+              className="text-content-system-global-primary hover:text-content-system-global-primary data-[state=on]:text-content-system-global-primary"
               onClick={() => {
                 editor.dispatchCommand(FORMAT_TEXT_COMMAND, "subscript");
               }}
-              size="sm"
             >
               <SubscriptIcon className="h-4 w-4" />
             </ToggleGroupItem>
             <ToggleGroupItem
               value="superscript"
               aria-label="Toggle superscript"
+              className="text-content-system-global-primary hover:text-content-system-global-primary data-[state=on]:text-content-system-global-primary"
               onClick={() => {
                 editor.dispatchCommand(FORMAT_TEXT_COMMAND, "superscript");
               }}
-              size="sm"
             >
               <SuperscriptIcon className="h-4 w-4" />
             </ToggleGroupItem>

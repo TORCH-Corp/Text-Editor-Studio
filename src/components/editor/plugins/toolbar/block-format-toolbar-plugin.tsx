@@ -73,9 +73,11 @@ export function BlockFormatDropDown({
         setBlockType(value as keyof typeof blockTypeToBlockName)
       }}
     >
-      <SelectTrigger className="h-8 [&_span]:w-fit w-fit justify-start gap-1 [&_p]:flex [&_p]:items-center [&_p]:gap-2 [&_p]:h-full [&_p]:m-0 [&_p]:w-fit">
-        {blockTypeToBlockName[blockType].icon}
-        <span className='flex  h-full text-center shrink-0 items-center w-full'>{blockTypeToBlockName[blockType].label}</span>
+      <SelectTrigger className="h-8 [&_span]:w-fit [&_span]:text-content-presentation-action-light-primary w-fit justify-start gap-1 [&_p]:flex [&_p]:items-center [&_p]:gap-2 [&_p]:h-full [&_p]:m-0 [&_p]:w-fit">
+        <div className="flex items-center gap-1 font-normal text-content-presentation-action-light-primary">
+          {blockTypeToBlockName[blockType].icon}
+          {blockTypeToBlockName[blockType].label}
+        </div>
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>{children}</SelectGroup>

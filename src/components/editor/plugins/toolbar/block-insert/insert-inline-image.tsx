@@ -19,9 +19,9 @@ export function InsertInlineImage() {
           />
         ))
       }
-      className=""
+
     >
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1 text-content-presentation-action-light-primary">
         <FileImageIcon className="size-4" />
         <span>Inline Image</span>
       </div>

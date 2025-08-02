@@ -3,7 +3,7 @@ import { $setBlocksType } from '@lexical/selection'
 import { $getSelection, $isRangeSelection } from 'lexical'
 
 import { useToolbarContext } from '@/components/editor/context/toolbar-context'
-import { SelectItem } from '@/components/ui/select'
+import { SelectItem } from '../../../../../../components/Select'
 
 import { blockTypeToBlockName } from '@/components/editor/plugins/toolbar/block-format/block-format-data'
 
@@ -35,8 +35,8 @@ export function FormatCodeBlock() {
   }
 
   return (
-    <SelectItem value="code" onPointerDown={formatCode}>
-      <div className="flex items-center gap-1 font-normal">
+    <SelectItem value="code" onPointerDown={formatCode} className="hover:!text-content-presentation-action-light-primary">
+      <div className="flex items-center gap-1 font-normal text-content-presentation-action-light-primary hover:text-content-presentation-action-light-primary">
         {blockTypeToBlockName[BLOCK_FORMAT_VALUE].icon}
         {blockTypeToBlockName[BLOCK_FORMAT_VALUE].label}
       </div>
